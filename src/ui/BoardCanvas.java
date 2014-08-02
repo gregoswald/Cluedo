@@ -3,4 +3,8 @@ import java.awt.*;
 
 public class BoardCanvas extends Canvas{
 
+	
+
+	
+
 }
