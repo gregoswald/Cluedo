@@ -30,7 +30,7 @@ public class Envelope {
 	 * @return Murder Weapon Card
 	 */
 	public Card getMurderWeapon(){
-		return murderer;
+		return murderWeapon;
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public class Envelope {
 	 * @return Murderer Card
 	 */
 	public Card getMurderRoom(){
-		return murderer;
+		return murderRoom;
 	}
 	
 	
