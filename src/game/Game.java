@@ -3,7 +3,7 @@ package game;
 public class Game {
 
 	/**
-	 * Main Method for the cluedo game -
+	 * Main Method for the Cluedo game -
 	 * Shouldn't be too complicated,
 	 * will probably pass off most of the functionality to other classes.
 	 * @param args
