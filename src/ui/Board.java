@@ -6,9 +6,8 @@ import game.Square;
  *
  */
 public class Board {
-	Square[][] board;
+	private Square[][] board; //2D Array representing the board < -- Uninitialised
 public Board(){
 	
 }
-
 }

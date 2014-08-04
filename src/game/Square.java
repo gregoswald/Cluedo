@@ -1,13 +1,14 @@
 package game;
-
+/**
+ * Can hold one of several different types - Player Piece, Room, Portal
+ *TODO add enum types for each different possible type
+ * @author syaz
+ *
+ */
 public class Square {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public Square(){
+		
 	}
 
 }
