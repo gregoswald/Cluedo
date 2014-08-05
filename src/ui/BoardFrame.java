@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 public class BoardFrame extends JFrame implements MouseListener {
 	BoardCanvas canvas;
 	public BoardFrame(){
+		super("CLUDO");		
 		canvas = new BoardCanvas();
 		setLayout(new BorderLayout()); 
 		add(canvas, BorderLayout.CENTER); //Lays out board in center, adds the canvas

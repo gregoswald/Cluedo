@@ -9,8 +9,7 @@ public class Game {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Fill in main to be able to run
-
+		BoardFrame cludo = new BoardFrame();
 	}
 
 }
