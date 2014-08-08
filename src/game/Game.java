@@ -1,5 +1,7 @@
 package game;
 
+import ui.BoardFrame;
+
 public class Game {
 
 	/**
@@ -9,7 +11,7 @@ public class Game {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		BoardFrame cludo = new BoardFrame();
+		BoardFrame cluedo = new BoardFrame();
 	}
 
 }
