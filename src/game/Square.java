@@ -11,6 +11,8 @@ public class Square {
 		
 	}
 
+<<<<<<< HEAD
+=======
 	
 	public enum type{
 		ROOM, PORTAL, SPACE, WALL, PIECE
@@ -19,4 +21,5 @@ public class Square {
 	
 	
 	
+>>>>>>> 85c049668bc03399f57ab796de23766c24337ceb
 }

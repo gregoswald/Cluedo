@@ -6,51 +6,51 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
-public class BoardFrame extends JFrame implements MouseListener{
+public class BoardFrame extends JFrame implements MouseListener {
 	BoardCanvas canvas;
 	public BoardFrame(){
-<<<<<<< HEAD
-		super("CLUDO");		
-=======
-		super("CLUEDO");		
->>>>>>> 85c049668bc03399f57ab796de23766c24337ceb
 		canvas = new BoardCanvas();
-		setLayout(new BorderLayout()); 
+		setLayout(new BorderLayout());
 		add(canvas, BorderLayout.CENTER); //Lays out board in center, adds the canvas
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setResizable(false); //prevents board from being resizable
-		setVisible(true); 
+		setVisible(true);
 		addMouseListener(this);
-		
-		
+
 	}
 	@Override
-	public void mouseClicked(MouseEvent e) {
+
+	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
-	public void mouseExited(MouseEvent e) {
+	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	/**
+	 * Will need to check that click space is not invalid. Will not move until release event.
+	 */
+	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
 
 }

@@ -1,4 +1,8 @@
 package ui;
+<<<<<<< HEAD
+import java.awt.Dimension;
+=======
+>>>>>>> 85c049668bc03399f57ab796de23766c24337ceb
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Color;
@@ -6,12 +10,36 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 public class BoardCanvas extends JPanel{
+<<<<<<< HEAD
+	private int canvas_width = 600;
+	private int canvas_height = 600;
+
+	public Dimension getPreferredSize(){
+		return new Dimension(canvas_width,canvas_height);
+	}
+
+	public void drawGrid(int grid_lines,Graphics g){
+		int grid_size = (int)canvas_width / grid_lines;
+		int count = 0;
+		while(count < grid_lines+1){
+			g.setColor(Color.BLACK);
+			g.drawLine(0,grid_size*count,canvas_height,grid_size*count);
+			g.drawLine(grid_size*count,0,grid_size*count,canvas_height);
+			count++;
+		}
+	}
+	public void paint(Graphics g){
+		g.setColor(Color.BLACK);
+		drawGrid(26,g);
+		//g.fillRect(10, 10, 10, 10); //Not correct dimensions will need draw algorithm for a grid based on 2D array in Board.java
+=======
 
 
 
 	public void paint(Graphics g){
 		g.setColor(Color.BLACK);
 		g.fillRect(10, 10, 10, 10); //Not correct dimensions will need draw algorithm for a grid based on 2D array in Board.java
+>>>>>>> 85c049668bc03399f57ab796de23766c24337ceb
 	}
 	/**
 	 * Will move player piece x squares up or down
