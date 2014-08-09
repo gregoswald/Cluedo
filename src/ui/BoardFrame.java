@@ -9,11 +9,7 @@ import javax.swing.JFrame;
 public class BoardFrame extends JFrame implements MouseListener{
 	BoardCanvas canvas;
 	public BoardFrame(){
-<<<<<<< HEAD
-		super("CLUDO");		
-=======
 		super("CLUEDO");		
->>>>>>> 85c049668bc03399f57ab796de23766c24337ceb
 		canvas = new BoardCanvas();
 		setLayout(new BorderLayout()); 
 		add(canvas, BorderLayout.CENTER); //Lays out board in center, adds the canvas
@@ -22,35 +18,35 @@ public class BoardFrame extends JFrame implements MouseListener{
 		setResizable(false); //prevents board from being resizable
 		setVisible(true); 
 		addMouseListener(this);
-		
-		
+
+
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
+
+
 
 }
