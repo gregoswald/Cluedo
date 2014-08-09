@@ -2,13 +2,11 @@ package game;
 
 public class Room {
 Type roomID;
-int x;
-int y;
+
 	
-public Room(Type Identifier, int x , int y){
+public Room(Type Identifier){
 	this.roomID = Identifier;
-	this.x = x;
-	this.y = y;
+	
 	
 }
 

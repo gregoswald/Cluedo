@@ -6,14 +6,15 @@ package game;
  *
  */
 public class Square {
-
-	public Square(){
-		
+Type identifier;
+	public Square(Type Identifier){
+		this.identifier = Identifier;
 	}
 
 
 	
-	public enum type{
-		ROOM, PORTAL, SPACE, WALL, PIECE
+	public enum Type{
+		ROOM, PORTAL, FLOOR, WALL, PIECE, STUDY, HALL, DOOR, LOUNGE, LIBRARY, CELLAR, DININGROOM,
+		BILLIARDROOM, BALLROOM, KITCHEN, CONSERVATORY, PLUM, SCARLETT, MUSTARD, PEACOCK, GREEN, WHITE
 	}
 }
