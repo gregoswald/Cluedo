@@ -2,7 +2,9 @@ package game;
 
 public class Room {
 	
-public Room(String roomType){
+public Room(String Identifier){
 	
 }
+
+
 }

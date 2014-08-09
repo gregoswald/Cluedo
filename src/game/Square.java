@@ -11,4 +11,12 @@ public class Square {
 		
 	}
 
+	
+	public enum type{
+		ROOM, PORTAL, SPACE, WALL, PIECE
+	}
+	
+	
+	
+	
 }
