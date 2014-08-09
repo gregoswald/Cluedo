@@ -7,6 +7,9 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 
 public class BoardFrame extends JFrame implements MouseListener{
+	int mouseClickX;
+	int mouseClickY;
+	
 	BoardCanvas canvas;
 	public BoardFrame(){
 		super("CLUEDO");		
@@ -43,8 +46,8 @@ public class BoardFrame extends JFrame implements MouseListener{
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		canvas.movePiece(e.getX(), e.getY());
+		canvas.repaint();
 	}
 
 
