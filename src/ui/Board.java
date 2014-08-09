@@ -35,7 +35,7 @@ public class Board {
 					 */ 
 
 					//TODO Still needs to parse a letter for stairs which are a type of portal. They are not in the text file yet though
-					if(letter.equals('S')){ //study
+					if(letter.equals('s')){ //study
 						board[x][y] = new Square(Type.STUDY);	
 
 
@@ -117,6 +117,7 @@ public class Board {
 				}
 
 				y++; //increments y by 1, so that the 2D array drops down one.
+				x=0; //Reset x back to 0 to start from the left again.
 			}
 
 		}
