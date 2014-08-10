@@ -14,8 +14,7 @@ public class Game {
 
 		BoardFrame cludo = new BoardFrame();
 
-		BoardFrame cluedo = new BoardFrame();
-
+		
 	}
 
 }

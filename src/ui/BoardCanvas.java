@@ -40,15 +40,12 @@ public class BoardCanvas extends JPanel{
 		g.fillRect(0,0,canvas_width,canvas_height);
 		g.setColor(Color.BLACK);
 		drawGrid(g);
-		//g.fillRect(10, 10, 10, 10); //Not correct dimensions will need draw algorithm for a grid based on 2D array in Board.java
+		
 
 		g.setColor(Color.GREEN);
 		g.fillOval(piece_x,piece_y,piece_size,piece_size);
 	}
-	/**
-	 * Will move player piece x squares up or down
-	 * @param x Moves piece x squares up or down on the board - (Negative is down, Positive up)
-	 */
+	
 	public void setSquare(int x,int y){
 		square_x = x/grid_size;
 		square_y = (y/grid_size)-1;
