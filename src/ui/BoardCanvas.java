@@ -14,8 +14,11 @@ public class BoardCanvas extends JPanel{
 	private int canvas_height = 600;
 	private final int grid_lines = 26;
 	private final int grid_size = (int)canvas_width / grid_lines;
-	private int player_token_x = 0;
-	private int player_token_y = 0;
+	private int square_x = 0;
+	private int square_y = 0;
+	private int piece_x = 0;
+	private int piece_y = 0;
+	private int piece_size = grid_size-1;
 	public Dimension getPreferredSize(){
 		return new Dimension(canvas_width,canvas_height);
 	}
@@ -33,23 +36,39 @@ public class BoardCanvas extends JPanel{
 		
 	}
 	public void paint(Graphics g){
+		g.setColor(Color.GRAY);
+		g.fillRect(0,0,canvas_width,canvas_height);
 		g.setColor(Color.BLACK);
 		drawGrid(g);
 		//g.fillRect(10, 10, 10, 10); //Not correct dimensions will need draw algorithm for a grid based on 2D array in Board.java
+
 		g.setColor(Color.GREEN);
-		g.fillRect(player_token_x,player_token_y,grid_size-1,grid_size-1);
+		g.fillOval(piece_x,piece_y,piece_size,piece_size);
 	}
 	/**
 	 * Will move player piece x squares up or down
 	 * @param x Moves piece x squares up or down on the board - (Negative is down, Positive up)
 	 */
+	public void setSquare(int x,int y){
+		square_x = x/grid_size;
+		square_y = (y/grid_size)-1;
+	}
+	public void setPiece(){
+		piece_size = grid_size-1;
+		piece_x = square_x*grid_size+1;
+		piece_y = square_y*grid_size+1;
+	}
+	public void selectPiece(){
+		//is there a piece in the current square or whatever should probs go here
+		piece_x = piece_x-3;
+		piece_y = piece_y-3;
+		piece_size = piece_size+6;
+	}
 	public void movePiece(int x,int y){
-		player_token_x = (x%26)*grid_size+1;
-		player_token_y = (y%26)*grid_size+1;
-		System.out.println("x:"+x);
-		System.out.println("y:"+y);
-		System.out.println(x%26);
-		System.out.println(y%26);
+		System.out.println("x:"+x+" y:"+y);
+		piece_x = x;
+		piece_y = y;
+		
 	}
 	
 

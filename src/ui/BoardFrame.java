@@ -3,10 +3,11 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
-public class BoardFrame extends JFrame implements MouseListener{
+public class BoardFrame extends JFrame implements MouseListener,MouseMotionListener{
 	int mouseClickX;
 	int mouseClickY;
 	
@@ -36,18 +37,36 @@ public class BoardFrame extends JFrame implements MouseListener{
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub2
 
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		canvas.selectPiece();
+		canvas.repaint();
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		canvas.setSquare(e.getX(), e.getY());
+		canvas.setPiece();
+		//int count =0;
+		//while(count < 300){
+		//	canvas.movePiece(count, count);
+		//	canvas.repaint();
+		//count++;
+		//}
+		canvas.repaint();
+	}
+	@Override
+	public void mouseDragged(MouseEvent e) {
 		canvas.movePiece(e.getX(), e.getY());
 		canvas.repaint();
+		
+	}
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		
+		
 	}
 
 
