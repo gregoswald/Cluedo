@@ -14,7 +14,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	BoardCanvas canvas;
 	public BoardFrame(){
 		super("CLUEDO");		
-		canvas = new BoardCanvas();
+		canvas = new BoardCanvas(new Board());
 		setLayout(new BorderLayout()); 
 		add(canvas, BorderLayout.CENTER); //Lays out board in center, adds the canvas
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,6 +24,9 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		addMouseListener(this);
 
 
+	}
+	public BoardCanvas getCanvas(){
+		return canvas;
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {

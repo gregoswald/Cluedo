@@ -19,6 +19,14 @@ public class BoardCanvas extends JPanel{
 	private int piece_x = 0;
 	private int piece_y = 0;
 	private int piece_size = grid_size-1;
+	private Board board;
+	public BoardCanvas(Board gameBoard){
+		this.board = gameBoard;
+	
+	}
+	public Board getGameBoard(){
+		return board;
+	}
 	public Dimension getPreferredSize(){
 		return new Dimension(canvas_width,canvas_height);
 	}

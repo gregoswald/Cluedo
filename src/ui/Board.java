@@ -7,29 +7,40 @@ import java.io.File;
 import java.io.FileNotFoundException;
 /**
  * Class Which constitutes the board logic within the Game
- * @author Jarred Hone
+ * @author Jarred Hone, Greg Oswald
  *
  */
+
 public class Board {
+	String filename;
 	private Square[][] board = new Square[26][26]; //2D Array representing the board < -- Uninitialised
 	public Board(){
-
+		fillInitialArray();
 	}
 	/**
 	 * Fills array with initial values from a text file using a parser - should only need to be called once and the base board will never change.
 	 */
+	public void setFileName(String filename){
+		this.filename = filename;
+			
+		}
+		
+	
 	private void fillInitialArray(){
 		int x = 0;
 		int y = 0;
 		try{
 			//Read File and set up Scanner
-			File text = new File("parse.txt");
+			File text = new File(filename);
 			Scanner scan = new Scanner(text);
+			String letter = "x";
 			while(scan.hasNextLine()){ //While there is a next line of input
 				String line = scan.nextLine(); //Store the entire next line as a string
 				Scanner lineSplit = new Scanner(line); //New scanner on the string line to break it into parts.
 				for(x=0; x<line.length();x++){ //Loops along the line in sync with array 
-					String letter = lineSplit.next(); //The letter we will be dealing with in the current iteration.
+					if(lineSplit.hasNext()){
+					letter = lineSplit.next(); //The letter we will be dealing with in the current iteration.
+					}
 					/**
 					 * Parsing Begins
 					 */ 
@@ -118,6 +129,14 @@ public class Board {
 
 				y++; //increments y by 1, so that the 2D array drops down one.
 				x=0; //Reset x back to 0 to start from the left again.
+			}
+			//function for testing - prints out the array
+			for(int r=0; r<board.length; r++) {
+				for(int c=0; c<board[r].length; c++)
+					if(board[r][c]!= null){
+					System.out.print(board[r][c] + " ");
+					}
+				System.out.println();
 			}
 
 		}

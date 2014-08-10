@@ -10,9 +10,12 @@ public class Game {
 	 * will probably pass off most of the functionality to other classes.
 	 * @param args
 	 */
+	String filename;
 	public static void main(String[] args) {
 
-		BoardFrame cludo = new BoardFrame();
+		BoardFrame cluedo = new BoardFrame();
+		String filename = args[0];
+		cluedo.getCanvas().getGameBoard().setFileName(filename);
 
 		
 	}
