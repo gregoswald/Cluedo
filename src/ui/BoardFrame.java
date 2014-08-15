@@ -62,8 +62,8 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				textOutput.setEditable(false);
 				textOutput.setText("  Welcome to Cluedo");
 				textSP = new JScrollPane(textOutput);
-				accuseButton = new JButton("Accuse  ");
-				endTurnButton = new JButton("End Turn");
+				accuseButton = new JButton("   Accuse   ");
+				endTurnButton = new JButton("  End Turn  ");
 				revealCardsButton = new JButton("Reveal Cards");
 				//Add components
 				grid.gridwidth = 3;
