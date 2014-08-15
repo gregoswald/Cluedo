@@ -56,82 +56,82 @@ public class BoardCanvas extends JPanel{
 	 */
 	private Color getSqColor(Square sq){
 		switch(sq.getID().ordinal()){
-		case 1:
+		case 0:
 
+		case 1:
 		case 2:
 		case 3:
+			//wall
+			return Color.PINK;
 		case 4:
-		case 5:
-		case 6:
 			//study
 			return Color.BLUE;
+		case 5:
+
+		case 6:
 		case 7:
 		case 8:
-		case 9:
 			//lounge
 			return Color.BLUE;
-			
-			
-			
-		case 10:
+
+
+
+		case 9:
 			//library
 			return Color.GRAY;
-			
-		case 11:
+
+		case 10:
 			//celler
 			return Color.GREEN;
-		
-		case 12:
+
+		case 11:
 			//dining room
 			return Color.blue;
-			
-		case 13:
+
+		case 12:
 			//billard room
 			return Color.LIGHT_GRAY;
-			
-		case 14:
+
+		case 13:
 			//ballroom
 			return Color.MAGENTA;
-			
-		case 15:
+
+		case 14:
 			//kitchen
 			return Color.ORANGE;
-			
-			
-		case 16:
+
+
+		case 15:
 			//conservatory
 			return Color.yellow;
-		
+
+		case 16:
 		case 17:
 		case 18:
 		case 19:
 		case 20:
 		case 21:
-		case 22:
 		default:
 			return Color.CYAN;
-}
+		}
 	}
 	public void paint(Graphics g){
-		
+
 		Square[][] squares = board.getBoardArray();
-		
 		int countY = 0;
-		System.out.println("y"+squares.length);
-		System.out.println("x"+squares[0].length);
 		while(countY<squares.length){
-			
 			int countX = 0;
 			while(countX<squares[0].length){
-				System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countY);
+				System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
 				g.setColor(getSqColor(squares[countY][countX]));
 				square_x = countX;
 				square_y = countY;
 				setPiece();
 				g.fillRect(piece_x,piece_y,piece_size,piece_size);
+				System.out.println("WHHHHHHHHHHHHY"+countX);
 				countX++;
 			}
-		countY++;
+			countY++;
 		}
 		g.setColor(Color.BLACK);
 		drawGrid(g);
