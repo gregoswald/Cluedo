@@ -1,29 +1,64 @@
 package ui;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class BoardFrame extends JFrame implements MouseListener,MouseMotionListener{
 	int mouseClickX;
 	int mouseClickY;
-	
+	private static int windowHeight = 850;
+	private int sidePanelWidth = 250;
 	BoardCanvas canvas;
+	private JPanel sidePanel;
+	private JScrollPane textSP;
+	private static JTextArea textOutput;
+	private GridBagConstraints grid;
 	public BoardFrame(){
 		super("CLUEDO");		
 		canvas = new BoardCanvas(new Board());
 		setLayout(new BorderLayout()); 
-		add(canvas, BorderLayout.CENTER); //Lays out board in center, adds the canvas
+		setupComponents();
+		
+		add(canvas, BorderLayout.WEST); //Lays out board in center, adds the canvas
+		add(sidePanel, BorderLayout.EAST);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setResizable(false); //prevents board from being resizable
 		setVisible(true); 
 		addMouseListener(this);
+		
+		
 
 
+	}
+	private void setupComponents(){
+		// Setup the grid
+				grid = new GridBagConstraints();
+				grid.insets = new Insets(5, 5, 5, 5);
+		// Setup the side panel
+				sidePanel = new JPanel(new GridBagLayout());
+				sidePanel.setSize(sidePanelWidth, windowHeight);
+				sidePanel.setBackground(Color.gray);
+				
+				// Setup components to go into the sidePanel
+				// Text Area
+				textOutput = new JTextArea(5, 25);
+				textOutput.setEditable(false);
+				textOutput.setText("  Welcome to Cluedo");
+				textSP = new JScrollPane(textOutput);
+				sidePanel.add(textSP, grid);
 	}
 	public BoardCanvas getCanvas(){
 		return canvas;
