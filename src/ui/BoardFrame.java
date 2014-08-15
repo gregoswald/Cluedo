@@ -67,8 +67,8 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				textOutput.setText("  Welcome to Cluedo");
 				textSP = new JScrollPane(textOutput);
 				accuseButton = newAccuseButton();
-				endTurnButton = new JButton("  End Turn  ");
-				revealCardsButton = new JButton("Reveal Cards");
+				endTurnButton = newEndTurnButton();
+				revealCardsButton = newRevealCardsButton();
 				//Add components
 				grid.gridwidth = 3;
 				grid.gridx = 0;
@@ -132,7 +132,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	}
 
 public static JButton newAccuseButton(){
-	final JButton button = new JButton("Accuse");
+	final JButton button = new JButton("   Accuse   ");
 	button.addActionListener(new ActionListener() {
 
 		@Override
@@ -145,6 +145,36 @@ public static JButton newAccuseButton(){
 			JPanel cardsPanel = new JPanel();
 			dialog.add(cardsPanel);
 			dialog.setVisible(true);
+			
+		}
+		
+	});
+	return button;
+
+}
+
+public static JButton newEndTurnButton(){
+	final JButton button = new JButton("  End Turn  ");
+	button.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+		
+			
+		}
+		
+	});
+	return button;
+
+}
+
+public static JButton newRevealCardsButton(){
+	final JButton button = new JButton("Reveal Cards");
+	button.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+		
 			
 		}
 		
