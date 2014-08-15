@@ -15,7 +15,7 @@ public class Board {
 	String filename;
 	private Square[][] board = new Square[26][26]; //2D Array representing the board < -- Uninitialised
 	public Board(){
-		//fillInitialArray(); will cause nullPointerException() if uncommented
+		//fillInitialArray();// will cause nullPointerException() if uncommented
 	}
 	/**
 	 * Fills array with initial values from a text file using a parser - should only need to be called once and the base board will never change.
