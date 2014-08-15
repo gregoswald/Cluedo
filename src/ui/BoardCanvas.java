@@ -135,16 +135,16 @@ public class BoardCanvas extends JPanel{
 		int countY = 0;
 		while(countY<squares.length){
 			int countX = 0;
-			while(countX<squares[0].length){
-				System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
-				g.setColor(getSqColor(squares[countY][countX]));
-				square_x = countX;
-				square_y = countY;
-				setPiece();
-				g.fillRect(piece_x,piece_y,piece_size,piece_size);
-				System.out.println("WHHHHHHHHHHHHY"+countX);
-				countX++;
-			}
+			//while(countX<squares[0].length){
+				//System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
+				//g.setColor(getSqColor(squares[countY][countX]));
+				//square_x = countX;
+				//square_y = countY;
+				//setPiece();
+				//g.fillRect(piece_x,piece_y,piece_size,piece_size);
+				//System.out.println("WHHHHHHHHHHHHY"+countX);
+				//countX++;
+			//}
 			countY++;
 		}
 		g.setColor(Color.BLACK);
