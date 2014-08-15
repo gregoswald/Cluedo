@@ -13,25 +13,26 @@ import java.io.FileNotFoundException;
  */
 
 public class Board {
-	String filename;
-	private Square[][] board = new Square[23][24]; //2D Array representing the board < -- Uninitialised
+	
+	private Square[][] board = new Square[23][24]; //2D Array representing the board
 	public Board(){
 		fillInitialArray();// will cause nullPointerException() if uncommented
 	}
+	
+	
+	
+	public Square[][] getBoardArray(){
+	return board;
+	}
+	
+	
 	/**
 	 * Fills array with initial values from a text file using a parser - should only need to be called once and the base board will never change.
-	 */
-	public void setFileName(String filename){
-		this.filename = filename;
-
-	}
-
-	/**
+	 *	
 	 * Is working now!!! I was trying to parse chars instead of strings.
 	 */
 	private void fillInitialArray(){
-		//int x = 0;
-		//int y = 0;
+		
 		File text;
 		try{
 			//Read File and set up Scanner
@@ -43,7 +44,7 @@ public class Board {
 			while(scan.hasNextLine()){ //While there is a next line of input
 				String line = scan.nextLine(); //Store the entire next line as a string
 				lineLength = line.length();
-				//Scanner lineSplit = new Scanner(line); //New scanner on the string line to break it into parts.
+
 				for(int x=0; x<board.length;x++){ //Loops along the line in sync with array
 					for(int y=0; y<board[0].length; y++){
 
@@ -55,12 +56,12 @@ public class Board {
 						//TODO Still needs to parse a letter for stairs which are a type of portal. They are not in the text file yet though
 						if(letter.equals("s")){ //study
 							board[x][y] = new Square(Type.STUDY);	
-							System.out.println("Study");
+							
 
 						}
 						else if(letter.equals("w")){ //wall
 							board[x][y] = new Square(Type.WALL);
-							System.out.println("Study");
+							
 						}
 						else if(letter.equals("h")){ //hall
 							board[x][y] = new Square(Type.HALL);

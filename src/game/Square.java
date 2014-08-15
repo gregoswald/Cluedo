@@ -11,7 +11,9 @@ Type identifier;
 		this.identifier = Identifier;
 	}
 
-
+public Type getID(){
+	return identifier;
+}
 	
 	public enum Type{
 		ROOM, PORTAL, FLOOR, WALL, PIECE, STUDY, HALL, DOOR, LOUNGE, LIBRARY, CELLAR, DININGROOM,
