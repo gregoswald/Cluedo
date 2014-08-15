@@ -6,6 +6,7 @@ package game;
  *
  */
 public class Square {
+
 Type identifier;
 	public Square(Type Identifier){
 		this.identifier = Identifier;
@@ -19,4 +20,6 @@ public Type getID(){
 		ROOM, PORTAL, FLOOR, WALL, PIECE, STUDY, HALL, DOOR, LOUNGE, LIBRARY, CELLAR, DININGROOM,
 		BILLIARDROOM, BALLROOM, KITCHEN, CONSERVATORY, PLUM, SCARLETT, MUSTARD, PEACOCK, GREEN, WHITE
 	}
+
+	
 }

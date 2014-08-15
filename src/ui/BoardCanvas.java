@@ -40,7 +40,7 @@ public class BoardCanvas extends JPanel{
 		int count = 0;
 
 		while(count < grid_lines+1){
-            g.setColor(Color.BLACK);
+			g.setColor(Color.BLACK);
 
 			g.drawLine(0,grid_size*count,canvas_height,grid_size*count);
 			g.drawLine(grid_size*count,0,grid_size*count,canvas_height);
@@ -54,53 +54,92 @@ public class BoardCanvas extends JPanel{
 	 * @param 
 	 * @param 
 	 */
-	public void drawSquare(){
-		Square[][] squares = board.getBoardArray();
-		int x = 0;
-		int y = 0;
-		while(x<squares.length){
-			while(y<squares[x].length){
-				switch(squares[x][y].getID().ordinal()){
-				case 1:
-				
-				case 2:
-				case 3:
-				case 4:
-				case 5:
-				case 6:
-				case 7:
-				case 8:
-				case 9:
-				case 10:
-				case 11:
-				case 12:
-				case 13:
-				case 14:
-				case 15:
-				case 16:
-				case 17:
-				case 18:
-				case 19:
-				case 20:
-				case 21:
-				case 22:
-				}
-			}
-		}
+	private Color getSqColor(Square sq){
+		switch(sq.getID().ordinal()){
+		case 1:
+
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+			//study
+		case 7:
+		case 8:
+		case 9:
+			//lounge
+			return Color.BLUE;
+			
+			
+			
+		case 10:
+			//library
+			return Color.GRAY;
+			
+		case 11:
+			//celler
+			return Color.GREEN;
+		
+		case 12:
+			//dining room
+			return Color.blue;
+			
+		case 13:
+			//billard room
+			return Color.LIGHT_GRAY;
+			
+		case 14:
+			//ballroom
+			return Color.MAGENTA;
+			
+		case 15:
+			//kitchen
+			return Color.ORANGE;
+			
+			
+		case 16:
+			//conservatory
+			return Color.yellow;
+		
+		case 17:
+		case 18:
+		case 19:
+		case 20:
+		case 21:
+		case 22:
+		default:
+			return Color.CYAN;
+}
 	}
 	public void paint(Graphics g){
-		g.setColor(Color.GRAY);
-		g.fillRect(0,0,canvas_width,canvas_height);
+		
+		Square[][] squares = board.getBoardArray();
+		
+		int countY = 0;
+		System.out.println("y"+squares.length);
+		System.out.println("x"+squares[0].length);
+		while(countY<squares.length){
+			System.out.println("countY"+countY);
+			int countX = 0;
+			while(countX<squares[0].length){
+				System.out.println("countX"+countX);
+				g.setColor(getSqColor(squares[countY][countX]));
+				square_x = countX;
+				square_y = countY;
+				setPiece();
+				g.fillRect(piece_x,piece_y,piece_size,piece_size);
+				countX++;
+			}
+		countY++;
+		}
 		g.setColor(Color.BLACK);
 		drawGrid(g);
-
-
-		g.setColor(Color.GREEN);
-		g.fillOval(piece_x,piece_y,piece_size,piece_size);
+		//g.setColor(Color.GREEN);
+		//g.fillOval(piece_x,piece_y,piece_size,piece_size);
 	}
 	//square selection logic stuff, needs refactoring.
 	/**
-	 * this probably needs renaming it returns the grid 
+	 * this probably needs renaming it sets the grid 
 	 * postition of a square the  mouse clicks in
 	 * @param x
 	 * @param y
