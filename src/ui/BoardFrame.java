@@ -46,7 +46,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	private void setupComponents(){
 		// Setup the grid
 				grid = new GridBagConstraints();
-				grid.insets = new Insets(5, 5, 5, 5);
+				
 		// Setup the side panel
 				sidePanel = new JPanel(new GridBagLayout());
 				sidePanel.setSize(sidePanelWidth, windowHeight);
