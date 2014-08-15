@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
@@ -25,6 +26,9 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	private JScrollPane textSP;
 	private static JTextArea textOutput;
 	private GridBagConstraints grid;
+	private JButton accuseButton;
+	private JButton endTurnButton;
+	private JButton revealCardsButton;
 	public BoardFrame(){
 		super("CLUEDO");		
 		canvas = new BoardCanvas(new Board());
@@ -58,7 +62,23 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				textOutput.setEditable(false);
 				textOutput.setText("  Welcome to Cluedo");
 				textSP = new JScrollPane(textOutput);
+				accuseButton = new JButton("Accuse  ");
+				endTurnButton = new JButton("End Turn");
+				revealCardsButton = new JButton("Reveal Cards");
+				//Add components
+				grid.gridwidth = 3;
+				grid.gridx = 0;
+				grid.gridy = 0;
 				sidePanel.add(textSP, grid);
+				grid.gridwidth = 1;
+				grid.gridx = 0;
+				grid.gridy = 2;
+				sidePanel.add(accuseButton, grid);
+				grid.gridx = 1;
+				sidePanel.add(endTurnButton, grid);
+				grid.gridx = 2;
+				sidePanel.add(revealCardsButton, grid);
+				
 	}
 	public BoardCanvas getCanvas(){
 		return canvas;
