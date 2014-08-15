@@ -14,8 +14,8 @@ public class Game {
 	public static void main(String[] args) {
 
 		BoardFrame cluedo = new BoardFrame();
-		String filename = args[0];
-		cluedo.getCanvas().getGameBoard().setFileName(filename);
+		//String filename = args[0];
+		//cluedo.getCanvas().getGameBoard().setFileName(filename);
 
 		
 	}
