@@ -62,7 +62,7 @@ public class BoardCanvas extends JPanel{
 		case 2:
 		case 3:
 			//wall
-			return Color.PINK;
+			return Color.BLUE;
 		case 4:
 			//study
 			return Color.BLUE;
@@ -115,20 +115,34 @@ public class BoardCanvas extends JPanel{
 			return Color.CYAN;
 		}
 	}
-	public void paint(Graphics g){
-
+	public void printBoardContents(){
 		Square[][] squares = board.getBoardArray();
 		int countY = 0;
 		while(countY<squares.length){
 			int countX = 0;
 			while(countX<squares[0].length){
-				System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
+				System.out.print("|"+squares[countY][countX].getID()+"|");
+				
+				countX++;
+			}
+			System.out.println();
+			countY++;
+		}
+	}
+	public void paint(Graphics g){
+		printBoardContents();
+		Square[][] squares = board.getBoardArray();
+		int countY = 0;
+		while(countY<squares.length){
+			int countX = 0;
+			while(countX<squares[0].length){
+				//System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
 				g.setColor(getSqColor(squares[countY][countX]));
 				square_x = countX;
 				square_y = countY;
 				setPiece();
-				g.fillRect(piece_x,piece_y,piece_size,piece_size);
-				System.out.println("WHHHHHHHHHHHHY"+countX);
+				//g.fillRect(piece_x,piece_y,piece_size,piece_size);
+				//System.out.println("WHHHHHHHHHHHHY"+countX);
 				countX++;
 			}
 			countY++;
