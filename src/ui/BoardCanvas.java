@@ -64,6 +64,7 @@ public class BoardCanvas extends JPanel{
 		case 5:
 		case 6:
 			//study
+			return Color.BLUE;
 		case 7:
 		case 8:
 		case 9:
@@ -119,10 +120,10 @@ public class BoardCanvas extends JPanel{
 		System.out.println("y"+squares.length);
 		System.out.println("x"+squares[0].length);
 		while(countY<squares.length){
-			System.out.println("countY"+countY);
+			
 			int countX = 0;
 			while(countX<squares[0].length){
-				System.out.println("countX"+countX);
+				System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countY);
 				g.setColor(getSqColor(squares[countY][countX]));
 				square_x = countX;
 				square_y = countY;
