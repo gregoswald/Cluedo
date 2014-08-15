@@ -5,16 +5,21 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 public class BoardFrame extends JFrame implements MouseListener,MouseMotionListener{
 	int mouseClickX;
@@ -34,7 +39,6 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		canvas = new BoardCanvas(new Board());
 		setLayout(new BorderLayout()); 
 		setupComponents();
-		
 		add(canvas, BorderLayout.WEST); //Lays out board in center, adds the canvas
 		add(sidePanel, BorderLayout.EAST);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +66,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				textOutput.setEditable(false);
 				textOutput.setText("  Welcome to Cluedo");
 				textSP = new JScrollPane(textOutput);
-				accuseButton = new JButton("   Accuse   ");
+				accuseButton = newAccuseButton();
 				endTurnButton = new JButton("  End Turn  ");
 				revealCardsButton = new JButton("Reveal Cards");
 				//Add components
@@ -127,6 +131,26 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		
 	}
 
+public static JButton newAccuseButton(){
+	final JButton button = new JButton("Accuse");
+	button.addActionListener(new ActionListener() {
 
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			Window mainWindow = SwingUtilities.windowForComponent(button);
+			final JDialog dialog = new JDialog(mainWindow, "Accuse");
+			dialog.setLocation(50, 50);
+			dialog.setSize(700,700);
+			dialog.setModal(true);
+			JPanel cardsPanel = new JPanel();
+			dialog.add(cardsPanel);
+			dialog.setVisible(true);
+			
+		}
+		
+	});
+	return button;
+
+}
 
 }
