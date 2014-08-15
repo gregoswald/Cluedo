@@ -130,7 +130,7 @@ public class BoardCanvas extends JPanel{
 		}
 	}
 	public void paint(Graphics g){
-		printBoardContents();
+		//printBoardContents();
 		Square[][] squares = board.getBoardArray();
 		int countY = 0;
 		while(countY<squares.length){

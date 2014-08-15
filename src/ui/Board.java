@@ -13,30 +13,31 @@ import java.io.FileNotFoundException;
  */
 
 public class Board {
-	
-	private Square[][] board = new Square[23][24]; //2D Array representing the board
+
+	private Square[][] board = new Square[24][24]; //2D Array representing the board
 	public Board(){
 		fillInitialArray();// will cause nullPointerException() if uncommented
 	}
-	
-	
-	
+
+
+
 	public Square[][] getBoardArray(){
-	return board;
+		return board;
 	}
-	
-	
+
+
 	/**
 	 * Fills array with initial values from a text file using a parser - should only need to be called once and the base board will never change.
 	 *	
 	 * Is working now!!! I was trying to parse chars instead of strings.
 	 */
 	private void fillInitialArray(){
-		
+
 		File text;
 		try{
 			//Read File and set up Scanner
 			int lineLength;
+			int cursor;
 			text = new File("parse.txt");
 			System.out.println(text);
 			Scanner scan = new Scanner(text);
@@ -46,9 +47,12 @@ public class Board {
 				lineLength = line.length();
 
 				for(int x=0; x<board.length;x++){ //Loops along the line in sync with array
+					cursor = 0;
 					for(int y=0; y<board[0].length; y++){
-
-						letter = Character.toString(line.charAt(y));
+					
+							letter = Character.toString(line.charAt(y));
+							System.out.println(letter);
+						
 						/**
 						 * Parsing Begins
 						 */ 
@@ -56,12 +60,12 @@ public class Board {
 						//TODO Still needs to parse a letter for stairs which are a type of portal. They are not in the text file yet though
 						if(letter.equals("s")){ //study
 							board[x][y] = new Square(Type.STUDY);	
-							
+
 
 						}
 						else if(letter.equals("w")){ //wall
 							board[x][y] = new Square(Type.WALL);
-							
+
 						}
 						else if(letter.equals("h")){ //hall
 							board[x][y] = new Square(Type.HALL);
@@ -130,15 +134,20 @@ public class Board {
 							board[x][y] = new Square(Type.WHITE);
 
 						}
-						else{ //Letter was unrecognised.
-
-						}
+						
 					}
 				}
 
 
 			}
-
+			  for(int i = 0; i < 20; i++)
+			   {
+			      for(int j = 0; j < 20; j++)
+			      {
+			         System.out.print(board[i][j].getID().toString());
+			      }
+			      System.out.println();
+			   }
 
 
 		}
