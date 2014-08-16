@@ -28,8 +28,10 @@ public class BoardCanvas extends JPanel{
 	private final int grid_size = (int)canvas_width / grid_lines;
 	private final int grid_size_y = (int)canvas_height / grid_lines_y;
 	private Player selected;
-	private int square_x = 0;
-	private int square_y = 0;
+	private int current_square_x = 0;
+	private int current_square_y = 0;
+	private int dest_square_x = 0;
+	private int dest_square_y = 0;
 	private int piece_x = 0;
 	private int piece_y = 0;
 	private int piece_size = grid_size-1;
@@ -143,63 +145,48 @@ public class BoardCanvas extends JPanel{
 
 			countY++;
 		}
-		g.setColor(Color.BLACK);
-		g.drawRect(1, 1,canvas_width-1,canvas_height-1);
-		g.drawRect(2, 2,canvas_width-3,canvas_height-3);
-		g.drawRect(3, 3,canvas_width-5,canvas_height-5);
-		g.drawRect(4, 4,canvas_width-7,canvas_height-7);
-		g.drawRect(5, 5,canvas_width-9,canvas_height-9);
-		g.drawRect(6, 6,canvas_width-11,canvas_height-11);
-		g.drawRect(7, 7,canvas_width-13,canvas_height-13);
-		g.drawRect(8, 8,canvas_width-15,canvas_height-15);
-		g.drawRect(9, 9,canvas_width-17,canvas_height-17);
-		g.drawRect(10, 10,canvas_width-19,canvas_height-19);
+		g.setColor(Color.black);
+		g.drawRect(1, 1,canvas_width-2,canvas_height-2);
+		g.setColor(Color.GRAY);
+		g.drawRect(2, 2,canvas_width-4,canvas_height-4);
+		g.drawRect(3, 3,canvas_width-6,canvas_height-6);
+		g.drawRect(4, 4,canvas_width-8,canvas_height-8);
+		g.drawRect(5, 5,canvas_width-10,canvas_height-10);
+		g.drawRect(6, 6,canvas_width-12,canvas_height-12);
+		g.drawRect(7, 7,canvas_width-14,canvas_height-14);
+		g.drawRect(8, 8,canvas_width-16,canvas_height-16);
+		g.drawRect(9, 9,canvas_width-18,canvas_height-18);
+		g.setColor(Color.black);
+		g.drawRect(10, 10,canvas_width-20,canvas_height-20);
 
 		
 		
 
 	}
-	//square selection logic stuff, needs refactoring.
-	/**
-	 * this probably needs renaming it sets the grid 
-	 * postition of a square the  mouse clicks in
-	 * @param x
-	 * @param y
-	 */
-	public void setSquare(int x,int y){
-		square_x = x/grid_size;
-		square_y = (y/grid_size)-1;//the -1 is a "black"magic number im not sure why but this wont work with out it.
-	}
-	/**
-	 * this also may need a rename this converts
-	 * an arbitrary x y to an x y
-	 * Relative to the grid
-	 * kinda like a snap to grid.
-	 */
+	
 	public void setPiece(int x,int y){
-		square_x = x/grid_size;
-		square_y = (y/grid_size)-1;
-		if(board.getBoardArray()[square_y][square_x].getOccupied()==null&&selected!=null){
-			board.getBoardArray()[square_y][square_x].setOccupied(selected);
+		dest_square_x = x/grid_size;
+		dest_square_y = (y/grid_size)-1;
+		if(board.getBoardArray()[dest_square_y][dest_square_x].getOccupied()==null&&selected!=null){
+			board.getBoardArray()[dest_square_y][dest_square_x].setOccupied(selected);
+			board.getBoardArray()[current_square_y][current_square_x].setOccupied(null);
+			selected = null;
+		}
+		else{
+			board.getBoardArray()[current_square_y][current_square_x].setOccupied(selected);
 			selected = null;
 		}
 		
-		//piece_size = grid_size-1;
-		//piece_x = square_x*grid_size+1;
-		//piece_y = square_y*grid_size+1;
-
 	}
-	/**
-	 * all this dose atm is that thing where the peice gets bigger when you click
-	 */
+	
 	public void selectPiece(int x,int y){
-		square_x = x/grid_size;
-		square_y = (y/grid_size)-1;
+		current_square_x = x/grid_size;
+		current_square_y = (y/grid_size)-1;
 		//is there a piece in the current square or whatever should probs go here
-		if(board.getBoardArray()[square_y][square_x].getOccupied()!=null){
-			selected = board.getBoardArray()[square_y][square_x].getOccupied();
-			System.out.println("SELECTED:"+board.getBoardArray()[square_y][square_x].getOccupied()+" @"+square_x+":"+square_y);
-			board.getBoardArray()[square_y][square_x].setOccupied(null);
+		if(board.getBoardArray()[current_square_y][current_square_x].getOccupied()!=null){
+			selected = board.getBoardArray()[current_square_y][current_square_x].getOccupied();
+			System.out.println("SELECTED:"+board.getBoardArray()[current_square_y][current_square_x].getOccupied()+" @"+current_square_x+":"+current_square_y);
+			
 		}
 		
 		
