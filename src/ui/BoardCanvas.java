@@ -41,7 +41,6 @@ public class BoardCanvas extends JPanel{
 
 		while(count < grid_lines+1){
 			g.setColor(Color.BLACK);
-
 			g.drawLine(0,grid_size*count,canvas_height,grid_size*count);
 			g.drawLine(grid_size*count,0,grid_size*count,canvas_height);
 			count++;
@@ -62,10 +61,10 @@ public class BoardCanvas extends JPanel{
 		case 2:
 		case 3:
 			//wall
-			return Color.BLUE;
+			return Color.LIGHT_GRAY;
 		case 4:
 			//study
-			return Color.BLUE;
+			return Color.magenta;
 		case 5:
 
 		case 6:
@@ -86,15 +85,15 @@ public class BoardCanvas extends JPanel{
 
 		case 11:
 			//dining room
-			return Color.blue;
+			return Color.pink;
 
 		case 12:
 			//billard room
-			return Color.LIGHT_GRAY;
+			return Color.red;
 
 		case 13:
 			//ballroom
-			return Color.MAGENTA;
+			return Color.white;
 
 		case 14:
 			//kitchen
@@ -115,20 +114,8 @@ public class BoardCanvas extends JPanel{
 			return Color.CYAN;
 		}
 	}
-	public void printBoardContents(){
-		Square[][] squares = board.getBoardArray();
-		int countY = 0;
-		while(countY<squares.length){
-			int countX = 0;
-			while(countX<squares[0].length){
-				System.out.print("|"+squares[countY][countX].getID()+"|");
-				
-				countX++;
-			}
-			System.out.println();
-			countY++;
-		}
-	}
+	
+	
 	public void paint(Graphics g){
 		//printBoardContents();
 		Square[][] squares = board.getBoardArray();
@@ -136,23 +123,24 @@ public class BoardCanvas extends JPanel{
 		while(countY<squares.length){
 			int countX = 0;
 
-			//while(countX<squares[0].length){
+			while(countX<squares[0].length){
 				//System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
-				//g.setColor(getSqColor(squares[countY][countX]));
-				//square_x = countX;
-				//square_y = countY;
-				//setPiece();
-				//g.fillRect(piece_x,piece_y,piece_size,piece_size);
+				g.setColor(getSqColor(squares[countY][countX]));
+				square_x = countX;
+				square_y = countY;
+				setPiece();
+				g.fillRect(piece_x,piece_y,piece_size,piece_size);
 				//System.out.println("WHHHHHHHHHHHHY"+countX);
-				//countX++;
-			//}
+				countX++;
+			}
 
 			countY++;
 		}
+		
 		g.setColor(Color.BLACK);
 		drawGrid(g);
 		//g.setColor(Color.GREEN);
-		//g.fillOval(piece_x,piece_y,piece_size,piece_size);
+		g.fillOval(piece_x,piece_y,piece_size,piece_size);
 	}
 	//square selection logic stuff, needs refactoring.
 	/**
