@@ -80,6 +80,11 @@ public class Board {
 						board[y][x] = new Square(Type.HALL);
 						System.out.print("h");
 					}
+					else if(nextToken.equals("_")||nextToken.equals("|")){ //door
+						board[y][x] = new Square(Type.BORDER);
+						System.out.print(".");
+					}
+					
 					else if(nextToken.equals("d")){ //door
 						board[y][x] = new Square(Type.DOOR);
 						System.out.print("d");

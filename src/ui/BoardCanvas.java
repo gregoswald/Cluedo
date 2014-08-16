@@ -15,10 +15,11 @@ import javax.swing.JPanel;
 public class BoardCanvas extends JPanel{
 
 	private int canvas_width = 812;
-	private int canvas_height = 812;
+	private int canvas_height = 841;
 	private final int grid_lines = 28;
-	private final int grid_lines_v = 28;
+	private final int grid_lines_y = 29;
 	private final int grid_size = (int)canvas_width / grid_lines;
+	private final int grid_size_y = (int)canvas_height / grid_lines_y;
 	private int square_x = 0;
 	private int square_y = 0;
 	private int piece_x = 0;
@@ -73,8 +74,10 @@ public class BoardCanvas extends JPanel{
 			return null;
 		case 11://portal
 			return Color.ORANGE;
-		case 12:
+		case 12://door
 			return Color.DARK_GRAY;
+		case 13://border
+			return Color.CYAN;
 		default:
 			return null;
 		}
@@ -86,16 +89,7 @@ public class BoardCanvas extends JPanel{
 		g.fillRect(0,0,canvas_height,canvas_width);
 		g.setColor(Color.BLACK);
 		drawGrid(g);
-		g.drawRect(1, 1,canvas_height-1,canvas_width-1);
-		g.drawRect(2, 2,canvas_height-3,canvas_width-3);
-		g.drawRect(3, 3,canvas_height-5,canvas_width-5);
-		g.drawRect(4, 4,canvas_height-7,canvas_width-7);
-		g.drawRect(5, 5,canvas_height-9,canvas_width-9);
-		g.drawRect(6, 6,canvas_height-11,canvas_width-11);
-		g.drawRect(7, 7,canvas_height-13,canvas_width-13);
-		g.drawRect(8, 8,canvas_height-15,canvas_width-15);
-		g.drawRect(9, 9,canvas_height-17,canvas_width-17);
-		g.drawRect(10, 10,canvas_height-19,canvas_width-19);
+		
 		Square[][] squares = board.getBoardArray();
 		int countY = 0;
 		while(countY<squares.length){
@@ -115,7 +109,17 @@ public class BoardCanvas extends JPanel{
 
 			countY++;
 		}
-
+		g.setColor(Color.BLACK);
+		g.drawRect(1, 1,canvas_width-1,canvas_height-1);
+		g.drawRect(2, 2,canvas_width-3,canvas_height-3);
+		g.drawRect(3, 3,canvas_width-5,canvas_height-5);
+		g.drawRect(4, 4,canvas_width-7,canvas_height-7);
+		g.drawRect(5, 5,canvas_width-9,canvas_height-9);
+		g.drawRect(6, 6,canvas_width-11,canvas_height-11);
+		g.drawRect(7, 7,canvas_width-13,canvas_height-13);
+		g.drawRect(8, 8,canvas_width-15,canvas_height-15);
+		g.drawRect(9, 9,canvas_width-17,canvas_height-17);
+		g.drawRect(10, 10,canvas_width-19,canvas_height-19);
 		
 		g.setColor(Color.GREEN);
 		g.fillOval(piece_x,piece_y,piece_size,piece_size);
