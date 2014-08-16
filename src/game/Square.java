@@ -6,7 +6,7 @@ package game;
  *
  */
 public class Square {
-
+private Player occupied;
 Type identifier;
 	public Square(Type Identifier){
 		this.identifier = Identifier;
@@ -17,8 +17,16 @@ public Type getID(){
 }
 	
 	public enum Type{
-		LOUNGE,STUDY,LIBRARY,CELLAR,HALL,BILLIARDROOM,BALLROOM,KITCHEN,CONSERVATORY,DININGROOM,FLOOR,PORTAL,DOOR,BORDER,ROOM, WALL, PIECE, 
+		LOUNGE,STUDY,LIBRARY,CELLAR,HALL,BILLIARDROOM,BALLROOM,KITCHEN,CONSERVATORY,DININGROOM,FLOOR,PORTAL,DOOR,BORDER, WALL, 
 		PLUM, SCARLETT, MUSTARD, PEACOCK, GREEN, WHITE
+	}
+
+	public Player getOccupied() {
+		return occupied;
+	}
+
+	public void setOccupied(Player occupied) {
+		this.occupied = occupied;
 	}
 
 	

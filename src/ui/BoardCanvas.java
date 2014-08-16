@@ -1,7 +1,14 @@
 package ui;
 
+import game.Green;
+import game.Mustard;
+import game.Peacock;
+import game.Player;
+import game.Plum;
 import game.Room.Type;
+import game.Scarlett;
 import game.Square;
+import game.White;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -20,6 +27,7 @@ public class BoardCanvas extends JPanel{
 	private final int grid_lines_y = 29;
 	private final int grid_size = (int)canvas_width / grid_lines;
 	private final int grid_size_y = (int)canvas_height / grid_lines_y;
+	private Player selected;
 	private int square_x = 0;
 	private int square_y = 0;
 	private int piece_x = 0;
@@ -82,28 +90,54 @@ public class BoardCanvas extends JPanel{
 			return null;
 		}
 	}
+	private Color getPColor(Player p){
+		if(p instanceof White ){
+			return Color.WHITE;
+		}
+		else if(p instanceof Green){
+			return Color.GREEN;
+		}
+		else if(p instanceof Peacock){
+			return Color.BLUE;
+		}
+		else if(p instanceof Plum){
+			return Color.pink;
+		}
+		else if(p instanceof Scarlett){
+			return Color.RED;
+		}
+		 
 
+		return Color.yellow;
+	}
 
 	public void paint(Graphics g){
 		g.setColor(Color.BLUE);
 		g.fillRect(0,0,canvas_height,canvas_width);
 		g.setColor(Color.BLACK);
 		drawGrid(g);
-		
+
 		Square[][] squares = board.getBoardArray();
 		int countY = 0;
 		while(countY<squares.length){
 			int countX = 0;
-				while(countX<squares[0].length){
+			while(countX<squares[0].length){
 				//System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
+				int sqx = countX*grid_size+1;
+				int sqy = countY*grid_size+1;
 				Color currentColor = getBoardSqColor(squares[countY][countX]);
 				if(currentColor!=null){
 					g.setColor(currentColor);
-					square_x = countX;
-					square_y = countY;
-					setPiece();
-					g.fillRect(piece_x,piece_y,piece_size+1,piece_size+1);
-					}
+					g.fillRect(sqx,sqy,grid_size,grid_size);
+				}
+				if(squares[countY][countX].getOccupied()!=null){
+					g.setColor(getPColor(squares[countY][countX].getOccupied()));
+					g.fillOval(sqx,sqy,piece_size,piece_size);
+					g.setColor(Color.black);
+					g.drawOval(sqx,sqy,piece_size,piece_size);
+					g.drawOval(sqx+5,sqy+5,piece_size-10,piece_size-10);
+					g.drawOval(sqx+8,sqy+8,piece_size-16,piece_size-16);
+				}
 				countX++;
 			}
 
@@ -120,9 +154,10 @@ public class BoardCanvas extends JPanel{
 		g.drawRect(8, 8,canvas_width-15,canvas_height-15);
 		g.drawRect(9, 9,canvas_width-17,canvas_height-17);
 		g.drawRect(10, 10,canvas_width-19,canvas_height-19);
+
 		
-		g.setColor(Color.GREEN);
-		g.fillOval(piece_x,piece_y,piece_size,piece_size);
+		
+
 	}
 	//square selection logic stuff, needs refactoring.
 	/**
@@ -141,20 +176,38 @@ public class BoardCanvas extends JPanel{
 	 * Relative to the grid
 	 * kinda like a snap to grid.
 	 */
-	public void setPiece(){
-		piece_size = grid_size-1;
-		piece_x = square_x*grid_size+1;
-		piece_y = square_y*grid_size+1;
+	public void setPiece(int x,int y){
+		square_x = x/grid_size;
+		square_y = (y/grid_size)-1;
+		if(board.getBoardArray()[square_y][square_x].getOccupied()==null&&selected!=null){
+			board.getBoardArray()[square_y][square_x].setOccupied(selected);
+			selected = null;
+		}
+		
+		//piece_size = grid_size-1;
+		//piece_x = square_x*grid_size+1;
+		//piece_y = square_y*grid_size+1;
+
 	}
 	/**
 	 * all this dose atm is that thing where the peice gets bigger when you click
 	 */
-	public void selectPiece(){
+	public void selectPiece(int x,int y){
+		square_x = x/grid_size;
+		square_y = (y/grid_size)-1;
 		//is there a piece in the current square or whatever should probs go here
-		piece_x = piece_x-3;
-		piece_y = piece_y-3;
-		piece_size = piece_size+6;
-	}
+		if(board.getBoardArray()[square_y][square_x].getOccupied()!=null){
+			selected = board.getBoardArray()[square_y][square_x].getOccupied();
+			System.out.println("SELECTED:"+board.getBoardArray()[square_y][square_x].getOccupied()+" @"+square_x+":"+square_y);
+			board.getBoardArray()[square_y][square_x].setOccupied(null);
+		}
+		
+		
+		//piece_x = piece_x-3;
+		//piece_y = piece_y-3;
+		//piece_size = piece_size+6;
+	
+		}
 	public void movePiece(int x,int y){
 		System.out.println("x:"+x+" y:"+y);
 		piece_x = x;

@@ -1,7 +1,13 @@
 package ui;
+import game.Green;
+import game.Mustard;
+import game.Peacock;
+import game.Plum;
 import game.Room;
+import game.Scarlett;
 import game.Square.Type;
 import game.Square;
+import game.White;
 
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -130,26 +136,32 @@ public class Board {
 					 */
 					else if(nextToken.equals("1")){ //Professor Plum
 						board[y][x] = new Square(Type.PLUM);
+						board[y][x].setOccupied(new Plum());
 						System.out.print('1');
 					}
 					else if(nextToken.equals("2")){ //Miss Scarlett
 						board[y][x] = new Square(Type.SCARLETT);
+						board[y][x].setOccupied(new Scarlett());
 						System.out.print('2');
 					}
 					else if(nextToken.equals("3")){ //Col. Mustard
 						board[y][x] = new Square(Type.MUSTARD);
+						board[y][x].setOccupied(new Mustard());
 						System.out.print('3');
 					}
 					else if(nextToken.equals("4")){ //Mrs Peacock
 						board[y][x] = new Square(Type.PEACOCK);
+						board[y][x].setOccupied(new Peacock());
 						System.out.print('4');
 					}
 					else if(nextToken.equals("5")){ //Mr. Green
 						board[y][x] = new Square(Type.GREEN);
+						board[y][x].setOccupied(new Green());
 						System.out.print('5');
 					}
 					else if(nextToken.equals("6")){ //Mrs White
 						board[y][x] = new Square(Type.WHITE);
+						board[y][x].setOccupied(new White());
 						System.out.print('6');
 					}
 
