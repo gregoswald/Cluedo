@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class Board {
 
-	private Square[][] board = new Square[25][24]; //2D Array representing the board
+	private Square[][] board = new Square[29][28]; //2D Array representing the board
 	public Board(){
 		fillInitialArray();// will cause nullPointerException() if uncommented
 	}
@@ -53,10 +53,11 @@ public class Board {
 				//System.out.println(line);
 				
 				
-				chars = line.split(" ",24);
+				chars = line.split(" ");
 				//While there is a next line of input
 
 				for(int x=0; x<board[0].length; x++){
+					//System.out.println(chars.length);
 					nextToken = chars[x];
 
 
@@ -164,9 +165,9 @@ public class Board {
 			System.out.println("IO Exception");
 		}
 		System.out.println("ARRAY CONTENTS:");
-		for(int i = 0; i < 25; i++)
+		for(int i = 0; i < 28; i++)
 		{
-			for(int j = 0; j < 24; j++)
+			for(int j = 0; j < 28; j++)
 			{
 				if(board[i][j]==null){System.out.print("**null**");};
 				if(board[i][j] != null){

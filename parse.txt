@@ -1,25 +1,29 @@
-s s s s s s w f w h h h h h h w 2 w l l l l l l
-s s s s s s s f f h h h h h h f f l l l l l l l
-s s s s s s s f f h h h h h h f f l l l l l l l
-s s s s s s s f f h h h h h h f f l l l l l l l
-w f f f f f f f f d h h h h h f f l l l l l l l
-1 f f f f f f f f h h h h h h f f d l l l l l l
-w i i i i i f f f h h d d h h f f f f f f f f f
-i i i i i i i f f f f f f f f f f f f f f f f 3
-i i i i i i d f f 0 0 0 0 0 f f f f f f f f f w
-i i i i i i i f f 0 0 0 0 0 f f p d p p p p p p
-w i i d i i f f f 0 0 0 0 0 f f p p p p p p p p
-w f f f f f f f f 0 0 0 0 0 f f p p p p p p p p
-t d t t t t f f f 0 0 0 0 0 f f d p p p p p p p
-t t t t t t f f f 0 0 0 0 0 f f p p p p p p p p
-t t t t t t f f f 0 0 0 0 0 f f p p p p p p p p
-t t t t t d f f f 0 0 0 0 0 f f f f f p p p p p
-t t t t t t f f f f f f f f f f f f f f f f f w
-w f f f f f f f b d b b b b d b f f f f f f f f
-4 f f f f f f f b b b b b b b b f f k d k k k w
-w c c c d f f f d b b b b b b d f f k k k k k k
-c c c c c c f f b b b b b b b b f f k k k k k k
-c c c c c c f f b b b b b b b b f f k k k k k k
-c c c c c c f f b b b b b b b b f f k k k k k k
-c c c c c c w f f f b b b b f f f w k k k k k k
-w w w w w w w w w 5 b b b b 6 w w w w w w w w w
+f f f f f f f f f f f f f f f f f f f f f f f f f f f f
+f f f f f f f f f f f f f f f f f f f f f f f f f f f f
+f f s s s s s s w f w h h h h h h w 2 w l l l l l l f f
+f f s s s s s s s f f h h h h h h f f l l l l l l l f f
+f f s s s s s s s f f h h h h h h f f l l l l l l l f f
+f f s s s s s s d f f h h h h h h f f l l l l l l l f f
+f f w f f f f f f f f d h h h h h f f l l l l l l l f f
+f f 1 f f f f f f f f h h h h h h f f d l l l l l l f f
+f f w i i i i i f f f h h d d h h f f f f f f f f f f f
+f f i i i i i i i f f f f f f f f f f f f f f f f 3 f f
+f f i i i i i i d f f 0 0 0 0 0 f f f f f f f f f w f f
+f f i i i i i i i f f 0 0 0 0 0 f f p d p p p p p p f f
+f f w i i d i i f f f 0 0 0 0 0 f f p p p p p p p p f f
+f f w f f f f f f f f 0 0 0 0 0 f f p p p p p p p p f f
+f f t d t t t t f f f 0 0 0 0 0 f f d p p p p p p p f f
+f f t t t t t t f f f 0 0 0 0 0 f f p p p p p p p p f f
+f f t t t t t t f f f 0 0 0 0 0 f f p p p p p p p p f f
+f f t t t t t d f f f 0 0 0 0 0 f f f f f p p p p p f f
+f f t t t t t t f f f f f f f f f f f f f f f f f w f f
+f f w f f f f f f f b d b b b b d b f f f f f f f f f f
+f f 4 f f f f f f f b b b b b b b b f f k d k k k w f f
+f f w c c c d f f f d b b b b b b d f f k k k k k k f f
+f f c c c c c c f f b b b b b b b b f f k k k k k k f f
+f f c c c c c c f f b b b b b b b b f f k k k k k k f f
+f f c c c c c c f f b b b b b b b b f f k k k k k k f f
+f f c c c c c c w f f f b b b b f f f w k k k k k k f f
+f f w w w w w w w w w 5 f f f f 6 w w w w w w w w w f f
+f f f f f f f f f f f f f f f f f f f f f f f f f f f f
+f f f f f f f f f f f f f f f f f f f f f f f f f f f f

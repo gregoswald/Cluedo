@@ -3,6 +3,7 @@ package ui;
 import game.Room.Type;
 import game.Square;
 
+import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Polygon;
@@ -13,10 +14,10 @@ import javax.swing.JPanel;
 
 public class BoardCanvas extends JPanel{
 
-	private int canvas_width = 600;
-	private int canvas_height = 600;
-	private final int grid_lines = 24;
-	private final int grid_lines_v = 23;
+	private int canvas_width = 812;
+	private int canvas_height = 812;
+	private final int grid_lines = 28;
+	private final int grid_lines_v = 28;
 	private final int grid_size = (int)canvas_width / grid_lines;
 	private int square_x = 0;
 	private int square_y = 0;
@@ -49,97 +50,74 @@ public class BoardCanvas extends JPanel{
 
 	}
 	/**
-	 * draws a square on the board.
+	 * returns the color of the type of sq,
+	 * returns null if passed a square that
+	 * isnt part of the board. 
 	 * @param 
 	 * @param 
 	 */
-	private Color getSqColor(Square sq){
+	private Color getBoardSqColor(Square sq){
 		switch(sq.getID().ordinal()){
-		case 0:
-
-		case 1:
-		case 2:
-		case 3:
-			//wall
+		case 0://lounge
+		case 1://study 
+		case 2://library
+		case 3://cellar
+		case 4://hall
+		case 5://billard room
+		case 6://ballroom
+		case 7://kitchen
+		case 8://conservitory
+		case 9://diningroom
 			return Color.LIGHT_GRAY;
-		case 4:
-			//study
-			return Color.magenta;
-		case 5:
-
-		case 6:
-		case 7:
-		case 8:
-			//lounge
-			return Color.BLUE;
-
-
-
-		case 9:
-			//library
-			return Color.GRAY;
-
-		case 10:
-			//celler
-			return Color.GREEN;
-
-		case 11:
-			//dining room
-			return Color.pink;
-
-		case 12:
-			//billard room
-			return Color.red;
-
-		case 13:
-			//ballroom
-			return Color.white;
-
-		case 14:
-			//kitchen
+		case 10://floor
+			return null;
+		case 11://portal
 			return Color.ORANGE;
-
-
-		case 15:
-			//conservatory
-			return Color.yellow;
-
-		case 16:
-		case 17:
-		case 18:
-		case 19:
-		case 20:
-		case 21:
+		case 12:
+			return Color.DARK_GRAY;
 		default:
-			return Color.CYAN;
+			return null;
 		}
 	}
-	
-	
+
+
 	public void paint(Graphics g){
-		//printBoardContents();
+		g.setColor(Color.BLUE);
+		g.fillRect(0,0,canvas_height,canvas_width);
+		g.setColor(Color.BLACK);
+		drawGrid(g);
+		g.drawRect(1, 1,canvas_height-1,canvas_width-1);
+		g.drawRect(2, 2,canvas_height-3,canvas_width-3);
+		g.drawRect(3, 3,canvas_height-5,canvas_width-5);
+		g.drawRect(4, 4,canvas_height-7,canvas_width-7);
+		g.drawRect(5, 5,canvas_height-9,canvas_width-9);
+		g.drawRect(6, 6,canvas_height-11,canvas_width-11);
+		g.drawRect(7, 7,canvas_height-13,canvas_width-13);
+		g.drawRect(8, 8,canvas_height-15,canvas_width-15);
+		g.drawRect(9, 9,canvas_height-17,canvas_width-17);
+		g.drawRect(10, 10,canvas_height-19,canvas_width-19);
 		Square[][] squares = board.getBoardArray();
 		int countY = 0;
 		while(countY<squares.length){
 			int countX = 0;
-
-			while(countX<squares[0].length){
+				while(countX<squares[0].length){
 				//System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
-				g.setColor(getSqColor(squares[countY][countX]));
-				square_x = countX;
-				square_y = countY;
-				setPiece();
-				g.fillRect(piece_x,piece_y,piece_size,piece_size);
-				//System.out.println("WHHHHHHHHHHHHY"+countX);
+				Color currentColor = getBoardSqColor(squares[countY][countX]);
+				if(currentColor!=null){
+					g.setColor(currentColor);
+					square_x = countX;
+					square_y = countY;
+					setPiece();
+					g.fillRect(piece_x,piece_y,piece_size+1,piece_size+1);
+					}
 				countX++;
 			}
 
 			countY++;
 		}
+
 		
-		g.setColor(Color.BLACK);
-		drawGrid(g);
-		//g.setColor(Color.GREEN);
+		g.setColor(Color.GREEN);
 		g.fillOval(piece_x,piece_y,piece_size,piece_size);
 	}
 	//square selection logic stuff, needs refactoring.
