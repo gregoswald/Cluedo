@@ -109,14 +109,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		//canvas.setSquare(e.getX(), e.getY());
 		canvas.setPiece(e.getX(), e.getY());
-		//int count =0;
-		//while(count < 300){
-		//	canvas.movePiece(count, count);
-		//	canvas.repaint();
-		//count++;
-		//}
 		canvas.repaint();
 	}
 	@Override

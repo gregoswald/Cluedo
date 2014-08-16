@@ -2,6 +2,7 @@ package ui;
 import game.Green;
 import game.Mustard;
 import game.Peacock;
+import game.Player;
 import game.Plum;
 import game.Room;
 import game.Scarlett;
@@ -22,19 +23,18 @@ import java.io.IOException;
  */
 
 public class Board {
-
+	private Player[] players;
+	private boolean solved;
+	private Player winner;
+	private int current_turn;
 	private Square[][] board = new Square[29][28]; //2D Array representing the board
+
 	public Board(){
 		fillInitialArray();// will cause nullPointerException() if uncommented
 	}
-
-
-
 	public Square[][] getBoardArray(){
 		return board;
 	}
-
-
 	/**
 	 * Fills array with initial values from a text file using a parser - should only need to be called once and the base board will never change.
 	 *	
@@ -42,8 +42,6 @@ public class Board {
 	 * @throws IOException 
 	 */
 	private void fillInitialArray(){
-
-//I spent a few hours trying to debug this, it appears to fill the array partially. the values in the array are in the correct order but i cant figure out why only some values will go in
 		try{
 			//Read File and set up Scanner
 			int y=0;
@@ -57,26 +55,21 @@ public class Board {
 			String[] chars;
 			while(((line = br.readLine())!= null)){
 				//System.out.println(line);
-				
-				
+
+
 				chars = line.split(" ");
 				//While there is a next line of input
 
 				for(int x=0; x<board[0].length; x++){
 					//System.out.println(chars.length);
 					nextToken = chars[x];
-
-
-
-					/**
+					/*
 					 * Parsing Begins
 					 */ 
-
 					//TODO Still needs to parse a nextToken for stairs which are a type of portal. They are not in the text file yet though
 					if(nextToken.equals("s")){ //study
 						board[y][x] = new Square(Type.STUDY);	
 						System.out.print("s");
-						
 					}
 					else if(nextToken.equals("w")){ //wall
 						board[y][x] = new Square(Type.WALL);
@@ -90,7 +83,7 @@ public class Board {
 						board[y][x] = new Square(Type.BORDER);
 						System.out.print(".");
 					}
-					
+
 					else if(nextToken.equals("d")){ //door
 						board[y][x] = new Square(Type.DOOR);
 						System.out.print("d");
@@ -169,7 +162,7 @@ public class Board {
 				System.out.println("  line:"+y);
 				y++;
 			}
-			
+
 
 
 

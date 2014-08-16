@@ -47,19 +47,6 @@ public class BoardCanvas extends JPanel{
 	public Dimension getPreferredSize(){
 		return new Dimension(canvas_width,canvas_height);
 	}
-
-	public void drawGrid(Graphics g){
-		int count = 0;
-
-		while(count < grid_lines+1){
-			g.setColor(Color.BLACK);
-			g.drawLine(0,grid_size*count,canvas_height,grid_size*count);
-			g.drawLine(grid_size*count,0,grid_size*count,canvas_height);
-			count++;
-
-		}
-
-	}
 	/**
 	 * returns the color of the type of sq,
 	 * returns null if passed a square that
@@ -108,17 +95,21 @@ public class BoardCanvas extends JPanel{
 		else if(p instanceof Scarlett){
 			return Color.RED;
 		}
-		 
-
-		return Color.yellow;
+		 return Color.yellow;
 	}
 
 	public void paint(Graphics g){
 		g.setColor(Color.BLUE);
 		g.fillRect(0,0,canvas_height,canvas_width);
 		g.setColor(Color.BLACK);
-		drawGrid(g);
+		int count = 0;
+		while(count < grid_lines+1){
+			g.setColor(Color.BLACK);
+			g.drawLine(0,grid_size*count,canvas_height,grid_size*count);
+			g.drawLine(grid_size*count,0,grid_size*count,canvas_height);
+			count++;
 
+		}
 		Square[][] squares = board.getBoardArray();
 		int countY = 0;
 		while(countY<squares.length){
@@ -158,12 +149,7 @@ public class BoardCanvas extends JPanel{
 		g.drawRect(9, 9,canvas_width-18,canvas_height-18);
 		g.setColor(Color.black);
 		g.drawRect(10, 10,canvas_width-20,canvas_height-20);
-
-		
-		
-
 	}
-	
 	public void setPiece(int x,int y){
 		dest_square_x = x/grid_size;
 		dest_square_y = (y/grid_size)-1;
@@ -178,7 +164,6 @@ public class BoardCanvas extends JPanel{
 		}
 		
 	}
-	
 	public void selectPiece(int x,int y){
 		current_square_x = x/grid_size;
 		current_square_y = (y/grid_size)-1;
