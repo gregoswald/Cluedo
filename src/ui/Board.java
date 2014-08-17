@@ -31,8 +31,16 @@ public class Board {
 	private boolean solved;
 	private Player winner;
 	private int current_turn;
-	private Square[][] board = new Square[29][28]; //2D Array representing the board
-
+	private final Square[][] board = new Square[29][28]; //2D Array representing the board
+	private final Room STUDY = new Room(); 
+	private final Room HALL = new Room();
+	private final Room LOUNGE = new Room();
+	private final Room DINING = new Room();
+	private final Room BALLROOM = new Room(); 
+	private final Room CONSERVATORY = new Room(); 
+	private final Room LIBRARY = new Room(); 
+	private final Room BILLIARDROOM = new Room();
+	
 	public Board(){
 		fillInitialArray();
 	}
@@ -42,7 +50,7 @@ public class Board {
 	/**
 	 * Fills array with initial values from a text file using a parser - should only need to be called once and the base board will never change.
 	 *	
-	 * Is working now!!! I was trying to parse chars instead of strings.
+	 * 
 	 * @throws IOException 
 	 */
 	private void fillInitialArray(){
@@ -178,6 +186,9 @@ public class Board {
 		dieTwo = rand.nextInt(6) + 1;
 		System.out.println(dieOne);
 		System.out.println(dieOne);
+	}
+	public void playGame(){
+		
 	}
 	public void addPlayer(int playerNo, Player character){
 		if(playerNo <= 6 && playerNo >= 0){

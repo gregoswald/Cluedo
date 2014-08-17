@@ -23,7 +23,7 @@ import java.util.Random;
 import javax.swing.*;
 
 public class BoardCanvas extends JPanel{
-	
+
 	private int canvas_width = 812;
 	private int canvas_height = 841;
 	private final int grid_lines = 28;
@@ -39,7 +39,7 @@ public class BoardCanvas extends JPanel{
 	private int piece_y = 0;
 	private int piece_size = grid_size-1;
 	private Board board;
-	
+
 	public BoardCanvas(Board gameBoard){
 		this.board = gameBoard;
 
@@ -80,6 +80,11 @@ public class BoardCanvas extends JPanel{
 			return null;
 		}
 	}
+	/**
+	 * 
+	 * @param p
+	 * @return
+	 */
 	private Color getPColor(Player p){
 		if(p instanceof White ){
 			return Color.WHITE;
@@ -96,9 +101,11 @@ public class BoardCanvas extends JPanel{
 		else if(p instanceof Scarlett){
 			return Color.RED;
 		}
-		 return Color.yellow;
+		return Color.yellow;
 	}
-
+	/**
+	 * 
+	 */
 	public void paint(Graphics g){
 		g.setColor(Color.BLUE);
 		g.fillRect(0,0,canvas_height,canvas_width);
@@ -109,23 +116,22 @@ public class BoardCanvas extends JPanel{
 			g.drawLine(0,grid_size*count,canvas_height,grid_size*count);
 			g.drawLine(grid_size*count,0,grid_size*count,canvas_height);
 			count++;
-
 		}
-		Square[][] squares = board.getBoardArray();
+		Square[][] boardSquares = board.getBoardArray();
 		int countY = 0;
-		while(countY<squares.length){
+		while(countY<boardSquares.length){
 			int countX = 0;
-			while(countX<squares[0].length){
+			while(countX<boardSquares[0].length){
 				//System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
 				int sqx = countX*grid_size+1;
 				int sqy = countY*grid_size+1;
-				Color currentColor = getBoardSqColor(squares[countY][countX]);
+				Color currentColor = getBoardSqColor(boardSquares[countY][countX]);
 				if(currentColor!=null){
 					g.setColor(currentColor);
 					g.fillRect(sqx,sqy,grid_size,grid_size);
 				}
-				if(squares[countY][countX].getOccupied()!=null){
-					g.setColor(getPColor(squares[countY][countX].getOccupied()));
+				if(boardSquares[countY][countX].getOccupied()!=null){
+					g.setColor(getPColor(boardSquares[countY][countX].getOccupied()));
 					g.fillOval(sqx,sqy,piece_size,piece_size);
 					g.setColor(Color.black);
 					g.drawOval(sqx,sqy,piece_size,piece_size);
@@ -134,11 +140,8 @@ public class BoardCanvas extends JPanel{
 				}
 				countX++;
 			}
-
 			countY++;
 		}
-		
-		
 		g.setColor(Color.GRAY);
 		((Graphics2D)g).setStroke(new BasicStroke(20f));
 		g.drawRect(2, 2,canvas_width-4,canvas_height-4);
@@ -147,8 +150,12 @@ public class BoardCanvas extends JPanel{
 		g.drawRect(0, 0,canvas_width-1,canvas_height-1);
 		((Graphics2D)g).setStroke(new BasicStroke(1f));
 		g.drawRect(11, 11,canvas_width-23,canvas_height-23);
-		
 	}
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void setPiece(int x,int y){
 		dest_square_x = x/grid_size;
 		dest_square_y = (y/grid_size)-1;
@@ -161,8 +168,12 @@ public class BoardCanvas extends JPanel{
 			board.getBoardArray()[current_square_y][current_square_x].setOccupied(selected);
 			selected = null;
 		}
-		
 	}
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void selectPiece(int x,int y){
 		current_square_x = x/grid_size;
 		current_square_y = (y/grid_size)-1;
@@ -170,23 +181,18 @@ public class BoardCanvas extends JPanel{
 		if(board.getBoardArray()[current_square_y][current_square_x].getOccupied()!=null){
 			selected = board.getBoardArray()[current_square_y][current_square_x].getOccupied();
 			System.out.println("SELECTED:"+board.getBoardArray()[current_square_y][current_square_x].getOccupied()+" @"+current_square_x+":"+current_square_y);
-			
 		}
-		
-		
-		//piece_x = piece_x-3;
-		//piece_y = piece_y-3;
-		//piece_size = piece_size+6;
-	
-		}
+	}
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 */
 	public void movePiece(int x,int y){
 		System.out.println("x:"+x+" y:"+y);
 		piece_x = x;
 		piece_y = y;
-
 	}
-
-
 	public void setNextPicture(){
 
 	}
