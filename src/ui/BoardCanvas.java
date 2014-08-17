@@ -16,11 +16,12 @@ import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Color;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
 public class BoardCanvas extends JPanel{
-
+	
 	private int canvas_width = 812;
 	private int canvas_height = 841;
 	private final int grid_lines = 28;
@@ -36,7 +37,7 @@ public class BoardCanvas extends JPanel{
 	private int piece_y = 0;
 	private int piece_size = grid_size-1;
 	private Board board;
-
+	
 	public BoardCanvas(Board gameBoard){
 		this.board = gameBoard;
 
@@ -47,6 +48,7 @@ public class BoardCanvas extends JPanel{
 	public Dimension getPreferredSize(){
 		return new Dimension(canvas_width,canvas_height);
 	}
+	
 	/**
 	 * returns the color of the type of sq,
 	 * returns null if passed a square that

@@ -10,6 +10,7 @@ import game.Square.Type;
 import game.Square;
 import game.White;
 
+import java.util.Random;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,6 +24,9 @@ import java.io.IOException;
  */
 
 public class Board {
+	private int dieOne;
+	private int dieTwo;
+	private Random rand = new Random();
 	private Player[] players;
 	private boolean solved;
 	private Player winner;
@@ -31,6 +35,22 @@ public class Board {
 
 	public Board(){
 		fillInitialArray();// will cause nullPointerException() if uncommented
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
+		rollDice();
 	}
 	public Square[][] getBoardArray(){
 		return board;
@@ -188,4 +208,14 @@ public class Board {
 		}
 
 	}
+	public void rollDice(){
+		dieOne = rand.nextInt(6) + 1;
+		dieTwo = rand.nextInt(6) + 1;
+		System.out.println(dieOne);
+		System.out.println(dieOne);
+	}
+
+
+
+
 }
