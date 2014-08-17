@@ -40,9 +40,9 @@ public class Board {
 	private final Room CONSERVATORY = new Room(); 
 	private final Room LIBRARY = new Room(); 
 	private final Room BILLIARDROOM = new Room();
-	
 	public Board(){
 		fillInitialArray();
+	
 	}
 	public Square[][] getBoardArray(){
 		return board;
@@ -187,7 +187,17 @@ public class Board {
 		System.out.println(dieOne);
 		System.out.println(dieOne);
 	}
-	public void playGame(){
+	
+	public void startGame(){
+		
+	}
+	public void validMove(){
+		//not more spaces than than dice roll
+		//with in bounds of board(wich is grid_size*2 less that canvas i beleive)
+		//not out of turn
+		//can only enter room through door
+	}
+	public void createHand(){
 		
 	}
 	public void addPlayer(int playerNo, Player character){

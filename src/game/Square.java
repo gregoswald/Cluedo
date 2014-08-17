@@ -1,4 +1,7 @@
 package game;
+
+import java.awt.Color;
+
 /**
  * Can hold one of several different types - Player Piece, Room, Portal
  *TODO add enum types for each different possible type
@@ -7,6 +10,7 @@ package game;
  */
 public class Square {
 private Player occupied;
+
 Type identifier;
 	public Square(Type Identifier){
 		this.identifier = Identifier;
@@ -28,6 +32,4 @@ public Type getID(){
 	public void setOccupied(Player occupied) {
 		this.occupied = occupied;
 	}
-
-	
 }
