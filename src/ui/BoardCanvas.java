@@ -10,15 +10,17 @@ import game.Scarlett;
 import game.Square;
 import game.White;
 
+import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Color;
 import java.util.Random;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class BoardCanvas extends JPanel{
 	
@@ -48,13 +50,10 @@ public class BoardCanvas extends JPanel{
 	public Dimension getPreferredSize(){
 		return new Dimension(canvas_width,canvas_height);
 	}
-	
 	/**
 	 * returns the color of the type of sq,
 	 * returns null if passed a square that
 	 * isnt part of the board. 
-	 * @param 
-	 * @param 
 	 */
 	private Color getBoardSqColor(Square sq){
 		switch(sq.getID().ordinal()){
@@ -138,19 +137,17 @@ public class BoardCanvas extends JPanel{
 
 			countY++;
 		}
-		g.setColor(Color.black);
-		g.drawRect(1, 1,canvas_width-2,canvas_height-2);
+		
+		
 		g.setColor(Color.GRAY);
+		((Graphics2D)g).setStroke(new BasicStroke(20f));
 		g.drawRect(2, 2,canvas_width-4,canvas_height-4);
-		g.drawRect(3, 3,canvas_width-6,canvas_height-6);
-		g.drawRect(4, 4,canvas_width-8,canvas_height-8);
-		g.drawRect(5, 5,canvas_width-10,canvas_height-10);
-		g.drawRect(6, 6,canvas_width-12,canvas_height-12);
-		g.drawRect(7, 7,canvas_width-14,canvas_height-14);
-		g.drawRect(8, 8,canvas_width-16,canvas_height-16);
-		g.drawRect(9, 9,canvas_width-18,canvas_height-18);
+		((Graphics2D)g).setStroke(new BasicStroke(2f));
 		g.setColor(Color.black);
-		g.drawRect(10, 10,canvas_width-20,canvas_height-20);
+		g.drawRect(0, 0,canvas_width-1,canvas_height-1);
+		((Graphics2D)g).setStroke(new BasicStroke(1f));
+		g.drawRect(11, 11,canvas_width-23,canvas_height-23);
+		
 	}
 	public void setPiece(int x,int y){
 		dest_square_x = x/grid_size;

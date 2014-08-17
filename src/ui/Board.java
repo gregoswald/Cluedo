@@ -34,23 +34,7 @@ public class Board {
 	private Square[][] board = new Square[29][28]; //2D Array representing the board
 
 	public Board(){
-		fillInitialArray();// will cause nullPointerException() if uncommented
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
-		rollDice();
+		fillInitialArray();
 	}
 	public Square[][] getBoardArray(){
 		return board;
@@ -63,29 +47,17 @@ public class Board {
 	 */
 	private void fillInitialArray(){
 		try{
-			//Read File and set up Scanner
+			//Set up file reader
 			int y=0;
 			String nextToken;
 			String line;
-			BufferedReader br = new BufferedReader(new FileReader("parse.txt"));
-			//text = new File("parse.txt");
-			//System.out.println(text);
-			//Scanner scan = new Scanner(text);
+			BufferedReader fReader = new BufferedReader(new FileReader("parse.txt"));
 			System.out.println("CHARS AS THEY ARE PARSED:");
 			String[] chars;
-			while(((line = br.readLine())!= null)){
-				//System.out.println(line);
-
-
+			while(((line = fReader.readLine())!= null)){
 				chars = line.split(" ");
-				//While there is a next line of input
-
 				for(int x=0; x<board[0].length; x++){
-					//System.out.println(chars.length);
 					nextToken = chars[x];
-					/*
-					 * Parsing Begins
-					 */ 
 					//TODO Still needs to parse a nextToken for stairs which are a type of portal. They are not in the text file yet though
 					if(nextToken.equals("s")){ //study
 						board[y][x] = new Square(Type.STUDY);	
@@ -103,7 +75,6 @@ public class Board {
 						board[y][x] = new Square(Type.BORDER);
 						System.out.print(".");
 					}
-
 					else if(nextToken.equals("d")){ //door
 						board[y][x] = new Square(Type.DOOR);
 						System.out.print("d");
@@ -182,11 +153,6 @@ public class Board {
 				System.out.println("  line:"+y);
 				y++;
 			}
-
-
-
-
-
 		}
 		catch(FileNotFoundException e){
 			System.out.println("File was not found");
@@ -206,7 +172,6 @@ public class Board {
 			}
 			System.out.println();
 		}
-
 	}
 	public void rollDice(){
 		dieOne = rand.nextInt(6) + 1;
@@ -214,7 +179,11 @@ public class Board {
 		System.out.println(dieOne);
 		System.out.println(dieOne);
 	}
-
+	public void addPlayer(int playerNo, Player character){
+		if(playerNo <= 6 && playerNo >= 0){
+			players[playerNo] = character;
+		}
+	}
 
 
 
