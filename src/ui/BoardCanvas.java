@@ -24,10 +24,10 @@ import javax.swing.*;
 
 public class BoardCanvas extends JPanel{
 
-	private int canvas_width = 812;
-	private int canvas_height = 841;
-	private final int grid_lines = 28;
-	private final int grid_lines_y = 29;
+	private int canvas_width = 624;
+	private int canvas_height = 675;
+	private final int grid_lines = 26;
+	private final int grid_lines_y = 27;
 	private final int grid_size = (int)canvas_width / grid_lines;
 	private final int grid_size_y = (int)canvas_height / grid_lines_y;
 	private Player selected;
@@ -108,7 +108,7 @@ public class BoardCanvas extends JPanel{
 	 */
 	public void paint(Graphics g){
 		g.setColor(Color.BLUE);
-		g.fillRect(0,0,canvas_height,canvas_width);
+		g.fillRect(0,0,canvas_width,canvas_height);
 		g.setColor(Color.BLACK);
 		int count = 0;
 		while(count < grid_lines+1){
@@ -123,8 +123,8 @@ public class BoardCanvas extends JPanel{
 			int countX = 0;
 			while(countX<boardSquares[0].length){
 				//System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
-				int sqx = countX*grid_size+1;
-				int sqy = countY*grid_size_y+1;
+				int sqx = countX*grid_size;
+				int sqy = countY*grid_size_y;
 				Color currentColor = getBoardSqColor(boardSquares[countY][countX]);
 				if(currentColor!=null){
 					g.setColor(currentColor);
@@ -142,14 +142,9 @@ public class BoardCanvas extends JPanel{
 			}
 			countY++;
 		}
-		g.setColor(Color.GRAY);
-		((Graphics2D)g).setStroke(new BasicStroke(20f));
-		g.drawRect(2, 2,canvas_width-4,canvas_height-4);
 		((Graphics2D)g).setStroke(new BasicStroke(2f));
 		g.setColor(Color.black);
 		g.drawRect(0, 0,canvas_width-1,canvas_height-1);
-		((Graphics2D)g).setStroke(new BasicStroke(1f));
-		g.drawRect(11, 11,canvas_width-23,canvas_height-23);
 	}
 	/**
 	 * 

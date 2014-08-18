@@ -31,7 +31,7 @@ public class Board {
 	private boolean solved;
 	private Player winner;
 	private int current_turn;
-	private final Square[][] board = new Square[29][28]; //2D Array representing the board
+	private final Square[][] board = new Square[27][26]; //2D Array representing the board
 	private final Room STUDY = new Room(); 
 	private final Room HALL = new Room();
 	private final Room LOUNGE = new Room();
@@ -169,9 +169,9 @@ public class Board {
 			System.out.println("IO Exception");
 		}
 		System.out.println("ARRAY CONTENTS:");
-		for(int i = 0; i < 28; i++)
+		for(int i = 0; i < 27; i++)
 		{
-			for(int j = 0; j < 28; j++)
+			for(int j = 0; j < 26; j++)
 			{
 				if(board[i][j]==null){System.out.print("**null**");};
 				if(board[i][j] != null){
