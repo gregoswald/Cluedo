@@ -1,4 +1,5 @@
 package ui;
+import game.Card;
 import game.Green;
 import game.Mustard;
 import game.Peacock;
@@ -9,7 +10,11 @@ import game.Scarlett;
 import game.Square.Type;
 import game.Square;
 import game.White;
+import game.roomCard;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -40,6 +45,7 @@ public class Board {
 	private final Room CONSERVATORY = new Room(); 
 	private final Room LIBRARY = new Room(); 
 	private final Room BILLIARDROOM = new Room();
+	List<Card> deck = new ArrayList<Card>();
 	public Board(){
 		fillInitialArray();
 	
@@ -242,6 +248,38 @@ public class Board {
 			players[playerNo] = character;
 		}
 	}
+	
+	
+/**
+ * Creates a deck out of randomised cards, leaving one in each category out for the envelope	
+ */
+public void makeDeck(){
+	List<Card> people = new ArrayList<Card>();
+	List<Card> weapons = new ArrayList<Card>();
+	List<Card> rooms = new ArrayList<Card>();
+	Card envelopeRoom;
+	Card envelopeWeapon;
+	Card envelopePerson;
+	
+	//Deals with room cards
+	rooms.add(new roomCard("Kitchen"));
+	rooms.add(new roomCard("Ballroom"));
+	rooms.add(new roomCard("Conservatory"));
+	rooms.add(new roomCard("Diningroom"));
+	rooms.add(new roomCard("Billiardroom"));
+	rooms.add(new roomCard("Library"));
+	rooms.add(new roomCard("Lounge"));
+	rooms.add(new roomCard("Hall"));
+	rooms.add(new roomCard("Study"));
+	Collections.shuffle(rooms);
+	envelopeRoom = rooms.remove(rooms.size());
+	
+	//Deals with weapon cards
+	
+	
+	
+	
+}
 
 
 
