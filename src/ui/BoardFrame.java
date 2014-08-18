@@ -173,18 +173,24 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						int players;
 						if(player2.isSelected()){
 							players = 2;
+							enterPlayerName(2);
 						}
 						else if(player3.isSelected()){
 							players = 3;
+							enterPlayerName(3);
+						
 						}
 						else if(player4.isSelected()){
 							players = 4;
+							enterPlayerName(4);
 						}
 						else if(player5.isSelected()){
 							players = 5;
+							enterPlayerName(5);
 						}
 						else{
 							players = 6;
+							enterPlayerName(6);
 						}
 
 						//Now that number of players is established, set the player characters
@@ -192,6 +198,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						canvas.getGameBoard().addPlayer(1, new Scarlett());
 						if(players >= 2){
 							canvas.getGameBoard().addPlayer(2, new Mustard());
+
 						}
 						if(players >= 3){
 							canvas.getGameBoard().addPlayer(3, new White());
@@ -345,6 +352,61 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 		});
 		return button;
+
+	}
+
+	public void enterPlayerName(int players){
+		if(players >=6){
+			Window player6Window = SwingUtilities.windowForComponent(menuItem);
+			JDialog player6Name = new JDialog(player6Window, "Player 6: Enter Name");
+			player6Name.setLocation(200,250);
+			player6Name.setModal(true);
+			player6Name.pack();
+			player6Name.setVisible(true);
+		}
+
+		if(players >= 5){
+			Window player5Window = SwingUtilities.windowForComponent(menuItem);
+			JDialog player5Name = new JDialog(player5Window, "Player 5: Enter Name");
+			player5Name.setLocation(200,250);
+			player5Name.setModal(true);
+			player5Name.pack();
+			player5Name.setVisible(true);
+		}
+
+		if(players >= 4){
+			Window player4Window = SwingUtilities.windowForComponent(menuItem);
+			JDialog player4Name = new JDialog(player4Window, "Player 4: Enter Name");
+			player4Name.setLocation(200,250);
+			player4Name.setModal(true);
+			player4Name.pack();
+			player4Name.setVisible(true);
+		}
+
+		if(players >= 3){
+			Window player3Window = SwingUtilities.windowForComponent(menuItem);
+			JDialog player3Name = new JDialog(player3Window, "Player 3: Enter Name");
+			player3Name.setLocation(200,250);
+			player3Name.setModal(true);
+			player3Name.pack();
+			player3Name.setVisible(true);
+		}
+		if(players >= 2){
+			Window player2Window = SwingUtilities.windowForComponent(menuItem);
+			JDialog player2Name = new JDialog(player2Window, "Player 2: Enter Name");
+			player2Name.setLocation(200,250);
+			player2Name.setModal(true);
+			player2Name.pack();
+			player2Name.setVisible(true);
+		}
+		if(players >= 1){
+			Window player1Window = SwingUtilities.windowForComponent(menuItem);
+			JDialog player1Name = new JDialog(player1Window, "Player 1: Enter Name");
+			player1Name.setLocation(200,250);
+			player1Name.setModal(true);
+			player1Name.pack();
+			player1Name.setVisible(true);
+		}
 
 	}
 
