@@ -65,7 +65,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		// MenuBar
 		menuBar = new JMenuBar();
 		// Menu	
-		menu = new JMenu("Options");
+		menu = new JMenu("Menu");
 		menu.getAccessibleContext().setAccessibleDescription(
 				"Menu Bar");
 		//create menuitems
