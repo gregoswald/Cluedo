@@ -152,15 +152,19 @@ public class BoardCanvas extends JPanel{
 	 * @param y
 	 */
 	public void setPiece(int x,int y){
+		//if((x>grid_size)&&(x<grid_size*grid_lines)&&(y>grid_size_y)&&(y<grid_size_y*grid_lines_y)){
 		dest_square_x = x/grid_size;
 		dest_square_y = (y/grid_size_y)-2;
-		if(board.validMove(current_square_x,current_square_y,dest_square_x,dest_square_y)){
+		if(board.getBoardArray()[dest_square_y][dest_square_x].getOccupied()==null&&selected!=null){
 			
 			board.getBoardArray()[dest_square_y][dest_square_x].setOccupied(selected);
 			board.getBoardArray()[current_square_y][current_square_x].setOccupied(null);
+			selected.setPos(board.getBoardArray()[current_square_y][current_square_x]);
 			selected = null;
 		
+			
 		}
+		//}
 		else{
 			board.getBoardArray()[current_square_y][current_square_x].setOccupied(selected);
 			selected = null;
@@ -172,13 +176,14 @@ public class BoardCanvas extends JPanel{
 	 * @param y
 	 */
 	public void selectPiece(int x,int y){
+		if(x>0&&x<canvas_width&&y>0&&y<canvas_height){
 		current_square_x = x/grid_size;
-		current_square_y = (y/grid_size_y)-2; //Accidentally broke mouse movement when adding menu bar, had to offset by one more
-		//is there a piece in the current square or whatever should probs go here
+		current_square_y = (y/grid_size_y)-2; 
 		if(board.getBoardArray()[current_square_y][current_square_x].getOccupied()!=null){
 			selected = board.getBoardArray()[current_square_y][current_square_x].getOccupied();
 			System.out.println("SELECTED:"+board.getBoardArray()[current_square_y][current_square_x].getOccupied()+" @"+current_square_x+":"+current_square_y);
 		}
+	}
 	}
 	/**
 	 * 

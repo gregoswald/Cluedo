@@ -21,7 +21,8 @@ public interface Player {
 List<Card> hand = new ArrayList<Card>();
 
 public List<Card> gethand();
-
+public void setPos(Square sq);
+public void getPos(Square sq);
 
 
 

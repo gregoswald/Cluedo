@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Peacock implements Player {
 	private String playerName;
+	private Square playerPos;
 	List<Card> hand = new ArrayList<Card>();
 	@Override
 	public List<Card> gethand() {
@@ -15,5 +16,11 @@ public class Peacock implements Player {
 	public void setPlayerName(String name) {
 		playerName = name;
 		
+	}
+	public void setPos(Square sq){
+		playerPos = sq;
+	}
+	public void getPos(Square sq){
+		playerPos = sq;
 	}
 }

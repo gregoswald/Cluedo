@@ -191,49 +191,7 @@ public class Board {
 	public void startGame(){
 		
 	}
-	public boolean validMove( int fromX, int fromY,int toX, int toY){
-		//not more spaces than than dice roll
-		//with in bounds of board(wich is grid_size*1 less that canvas i beleive)
-		//not out of turn
-		//can only enter room through door
 	
-	
-	if(board[toX][toY].getID().equals(Square.Type.BALLROOM)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.BILLIARDROOM)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.BORDER)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.CELLAR)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.CONSERVATORY)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.DININGROOM)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.HALL)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.LOUNGE)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.KITCHEN)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.LIBRARY)){
-		return false;
-	}
-	if(board[toX][toY].getID().equals(Square.Type.STUDY)){
-		return false;
-	}
-	
-	return true;
-			}
 	public void createHand(){
 		
 	}
