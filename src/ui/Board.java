@@ -35,7 +35,7 @@ public class Board {
 	private int dieOne;
 	private int dieTwo;
 	private Random rand = new Random();
-	private Player[] players;
+	private Player[] players = new Player[7];
 	private boolean solved;
 	private Player winner;
 	private int currentTurn;
@@ -310,11 +310,15 @@ public class Board {
 
 	}
 
-	public Envelope makeEnvelope(Card murderer, Card murderWeapon, Card murderRoom){
-		Envelope tempEnvelope = new Envelope(murderer, murderWeapon, murderRoom);
-		envelope = tempEnvelope;
-		return envelope;
+	public void makeEnvelope(Card murderer, Card murderWeapon, Card murderRoom){
+		
+		envelope = new Envelope(murderer, murderWeapon, murderRoom);
+		
 
+	}
+	
+	public Envelope getEnvelope(){
+		return envelope;
 	}
 
 

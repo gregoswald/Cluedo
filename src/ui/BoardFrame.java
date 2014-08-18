@@ -33,6 +33,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 public class BoardFrame extends JFrame implements MouseListener,MouseMotionListener{
 	int mouseClickX;
@@ -135,10 +136,13 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		JMenuItem startNewGameItem = new JMenuItem("New Game");
 		startNewGameItem.addActionListener(new ActionListener(){
 
+			private JButton submitButton;
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Window mainWindow = SwingUtilities.windowForComponent(menuItem);
-				JDialog title = new JDialog(mainWindow, "New Game");
+				final Window mainWindow = SwingUtilities.windowForComponent(menuItem);
+				final JDialog title = new JDialog(mainWindow, "New Game");
+				
 				title.setLocation(200,250);
 				title.setModal(true);
 
@@ -175,32 +179,32 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				buttonGroup.add(player6);
 
 				//Submit button and logic for new game window
-				JButton submitButton = new JButton("Submit");
+				submitButton = new JButton("Submit");
 				submitButton.addActionListener(new ActionListener(){
 
-
+					@Override
 					public void actionPerformed(ActionEvent e) {
 						int players;
 						if(player2.isSelected()){
 							players = 2;
-							enterPlayerName(2);
+							//enterPlayerName(2);
 						}
 						else if(player3.isSelected()){
 							players = 3;
-							enterPlayerName(3);
+							//enterPlayerName(3);
 
 						}
 						else if(player4.isSelected()){
 							players = 4;
-							enterPlayerName(4);
+							//enterPlayerName(4);
 						}
 						else if(player5.isSelected()){
 							players = 5;
-							enterPlayerName(5);
+							//enterPlayerName(5);
 						}
 						else{
 							players = 6;
-							enterPlayerName(6);
+							//enterPlayerName(6);
 						}
 
 						//Now that number of players is established, set the player characters
@@ -222,11 +226,12 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						if(players >= 6){
 							canvas.getGameBoard().addPlayer(5, new Plum());
 						}
-						
-					
+
+
 						//start the game again
 						//Envelope envelope = new Envelope();
 
+						title.dispose();
 					}
 
 				});
@@ -239,7 +244,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				title.add(numberPlayersPanel);
 				title.pack();
 				title.setVisible(true);
-				
+
 
 
 
@@ -251,7 +256,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		});
 
 
-		
+
 
 		return startNewGameItem;
 	}
@@ -318,7 +323,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				dialog.setModal(true);
 				JPanel cardsPanel = new JPanel();
 
-				
+
 
 
 				//DropDowns
