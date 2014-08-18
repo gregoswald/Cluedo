@@ -1,14 +1,14 @@
 package game;
 
 /**
- * This class represents a physical Weapon object. 
+ * This class represents a Weapon Card. 
  * It contains an ID pertaining to the Weapon type.
  * @author Jarred Hone
  *
  */
-public class Weapon {
+public class weaponCard implements Card{
 	private String weaponID;
-	public Weapon(String id){
+	public weaponCard(String id){
 		this.weaponID = id;
 
 	}

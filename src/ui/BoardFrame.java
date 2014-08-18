@@ -221,6 +221,10 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						if(players >= 6){
 							canvas.getGameBoard().addPlayer(6, new Plum());
 						}
+						
+						
+						//start the game again
+						Envelope envelope = new Envolope
 
 					}
 
