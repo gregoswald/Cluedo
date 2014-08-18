@@ -41,6 +41,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	private JMenuBar menuBar;
 	private JMenu menu;
 	private JMenuItem menuItem;
+	private JButton diceRollButton;
 	public BoardFrame(){
 		super("CLUEDO");		
 		canvas = new BoardCanvas(new Board());
@@ -93,6 +94,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		accuseButton = newAccuseButton();
 		endTurnButton = newEndTurnButton();
 		revealCardsButton = newRevealCardsButton();
+		diceRollButton = newDiceRollButton();
 		//Add components
 		grid.gridwidth = 3;
 		grid.gridx = 0;
@@ -106,6 +108,9 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		sidePanel.add(endTurnButton, grid);
 		grid.gridx = 2;
 		sidePanel.add(revealCardsButton, grid);
+		grid.gridx = 1;
+		grid.gridy = 3;
+		sidePanel.add(diceRollButton, grid);
 
 	}
 	
@@ -274,6 +279,21 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 	public static JButton newRevealCardsButton(){
 		final JButton button = new JButton("Reveal Cards");
+		button.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+
+			}
+
+		});
+		return button;
+
+	}
+	
+	public static JButton newDiceRollButton(){
+		final JButton button = new JButton("Roll Dice");
 		button.addActionListener(new ActionListener() {
 
 			@Override
