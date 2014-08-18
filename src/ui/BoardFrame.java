@@ -142,7 +142,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 			public void actionPerformed(ActionEvent arg0) {
 				final Window mainWindow = SwingUtilities.windowForComponent(menuItem);
 				final JDialog title = new JDialog(mainWindow, "New Game");
-				
+
 				title.setLocation(200,250);
 				title.setModal(true);
 
@@ -346,7 +346,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 					public void actionPerformed(ActionEvent arg0) {
 
-
+						dialog.dispose();
 					}
 
 				});
