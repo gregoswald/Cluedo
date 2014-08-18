@@ -57,11 +57,14 @@ public class Board {
 	public Square[][] getBoardArray(){
 		return board;
 	}
+	
+	
 	/**
 	 * Fills array with initial values from a text file using a parser - should only need to be called once and the base board will never change.
 	 *	
 	 * 
 	 * @throws IOException 
+	 * @throws FileNotFoundException
 	 */
 	private void fillInitialArray(){
 		try{
@@ -191,17 +194,30 @@ public class Board {
 			System.out.println();
 		}
 	}
+	
+	/**
+	 * Method to roll dice (Calculates number between 1 and 6 for two dice)
+	 */
 	public void rollDice(){
 		dieOne = rand.nextInt(6) + 1;
 		dieTwo = rand.nextInt(6) + 1;
-		System.out.println(dieOne);
-		System.out.println(dieTwo);
+		//System.out.println(dieOne); //Helper Method
+		//System.out.println(dieTwo); //Helper Method
 	}
 
 	public void startGame(){
 
 	}
 
+
+	/**
+	 * Checks if the player is making a valid move - To be used in movement constraints which are unimplemented currently
+	 * @param fromX
+	 * @param fromY
+	 * @param toX
+	 * @param toY
+	 * @return true or false, where true means a valid move based on dice roll + wall collision
+	 */
 	public boolean validMove( int fromX, int fromY,int toX, int toY){
 		//not more spaces than than dice roll
 		//with in bounds of board(wich is grid_size*1 less that canvas i beleive)
@@ -247,10 +263,18 @@ public class Board {
 	}
 
 
-
+	/**
+	 * Unimplemented Feature - Create Hand for Player
+	 */
 	public void createHand(){
 
 	}
+
+	/**
+	 * Adds a player to the list of players, used in boardFrame when creating new players
+	 * @param playerNo
+	 * @param character
+	 */
 	public void addPlayer(int playerNo, Player character){
 		if(playerNo <= 6 && playerNo >= 0){
 			players[playerNo] = character;
@@ -310,19 +334,38 @@ public class Board {
 
 	}
 
+
+	/**
+	 * Takes the three leftover cards from the deck and creates the envolope
+	 * @param murderer
+	 * @param murderWeapon
+	 * @param murderRoom
+	 */
+
 	public void makeEnvelope(Card murderer, Card murderWeapon, Card murderRoom){
-		
+
 		envelope = new Envelope(murderer, murderWeapon, murderRoom);
-		
+
 
 	}
-	
+
+
+	/**
+	 *  Getter Method for the Envelope
+	 * @return the Envelope
+	 */
 	public Envelope getEnvelope(){
 		return envelope;
 	}
 
-public Player getPlayer(int playerNumber){
-	return players[playerNumber];
-}
+
+	/**
+	 * Getter method for the player
+	 * @param playerNumber
+	 * @return the player and int x in the list of players
+	 */
+	public Player getPlayer(int playerNumber){
+		return players[playerNumber];
+	}
 
 }
