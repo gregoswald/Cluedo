@@ -175,7 +175,7 @@ public class Board {
 			{
 				if(board[i][j]==null){System.out.print("**null**");};
 				if(board[i][j] != null){
-					System.out.print(board[i][j].getID()+",");
+					//System.out.print(board[i][j].getID()+",");
 				}
 			}
 			System.out.println();

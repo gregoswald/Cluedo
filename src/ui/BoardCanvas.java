@@ -113,7 +113,7 @@ public class BoardCanvas extends JPanel{
 		int count = 0;
 		while(count < grid_lines+1){
 			g.setColor(Color.BLACK);
-			g.drawLine(0,grid_size*count,canvas_height,grid_size*count);
+			g.drawLine(0,grid_size_y*count,canvas_height,grid_size_y*count);
 			g.drawLine(grid_size*count,0,grid_size*count,canvas_height);
 			count++;
 		}
@@ -124,11 +124,11 @@ public class BoardCanvas extends JPanel{
 			while(countX<boardSquares[0].length){
 				//System.out.println("Drawing a:"+squares[countY][countX].getID()+"in square"+countY+":"+countX);
 				int sqx = countX*grid_size+1;
-				int sqy = countY*grid_size+1;
+				int sqy = countY*grid_size_y+1;
 				Color currentColor = getBoardSqColor(boardSquares[countY][countX]);
 				if(currentColor!=null){
 					g.setColor(currentColor);
-					g.fillRect(sqx,sqy,grid_size,grid_size);
+					g.fillRect(sqx,sqy,grid_size,grid_size_y);
 				}
 				if(boardSquares[countY][countX].getOccupied()!=null){
 					g.setColor(getPColor(boardSquares[countY][countX].getOccupied()));
@@ -158,7 +158,7 @@ public class BoardCanvas extends JPanel{
 	 */
 	public void setPiece(int x,int y){
 		dest_square_x = x/grid_size;
-		dest_square_y = (y/grid_size)-2;//Accidentally broke mouse movement when adding menu bar, had to offset by one more
+		dest_square_y = (y/grid_size_y)-1;//Accidentally broke mouse movement when adding menu bar, had to offset by one more
 		if(board.getBoardArray()[dest_square_y][dest_square_x].getOccupied()==null&&selected!=null){
 			board.getBoardArray()[dest_square_y][dest_square_x].setOccupied(selected);
 			board.getBoardArray()[current_square_y][current_square_x].setOccupied(null);
@@ -176,7 +176,7 @@ public class BoardCanvas extends JPanel{
 	 */
 	public void selectPiece(int x,int y){
 		current_square_x = x/grid_size;
-		current_square_y = (y/grid_size)-2; //Accidentally broke mouse movement when adding menu bar, had to offset by one more
+		current_square_y = (y/grid_size_y)-1; //Accidentally broke mouse movement when adding menu bar, had to offset by one more
 		//is there a piece in the current square or whatever should probs go here
 		if(board.getBoardArray()[current_square_y][current_square_x].getOccupied()!=null){
 			selected = board.getBoardArray()[current_square_y][current_square_x].getOccupied();
