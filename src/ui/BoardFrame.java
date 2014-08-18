@@ -204,22 +204,22 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 						//Now that number of players is established, set the player characters
 
-						canvas.getGameBoard().addPlayer(1, new Scarlett());
+						canvas.getGameBoard().addPlayer(0, new Scarlett());
 						if(players >= 2){
-							canvas.getGameBoard().addPlayer(2, new Mustard());
+							canvas.getGameBoard().addPlayer(1, new Mustard());
 
 						}
 						if(players >= 3){
-							canvas.getGameBoard().addPlayer(3, new White());
+							canvas.getGameBoard().addPlayer(2, new White());
 						}
 						if(players >= 4){
-							canvas.getGameBoard().addPlayer(4, new Green());
+							canvas.getGameBoard().addPlayer(3, new Green());
 						}
 						if(players >= 5){
-							canvas.getGameBoard().addPlayer(5, new Peacock());
+							canvas.getGameBoard().addPlayer(4, new Peacock());
 						}
 						if(players >= 6){
-							canvas.getGameBoard().addPlayer(6, new Plum());
+							canvas.getGameBoard().addPlayer(5, new Plum());
 						}
 
 					}
