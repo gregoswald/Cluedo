@@ -1,4 +1,5 @@
 package ui;
+import game.Envelope;
 import game.Green;
 import game.Mustard;
 import game.Peacock;
@@ -224,7 +225,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						
 						
 						//start the game again
-						Envelope envelope = new Envolope
+						//Envelope envelope = new Envelope();
 
 					}
 
@@ -282,6 +283,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	@Override
 	public void mousePressed(MouseEvent e) {
 		canvas.selectPiece(e.getX(), e.getY());
+		System.out.println(e.getX()+":"+e.getY());
 		canvas.repaint();
 	}
 	@Override

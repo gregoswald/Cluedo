@@ -198,6 +198,7 @@ public class Board {
 	public void startGame(){
 
 	}
+
 	public boolean validMove( int fromX, int fromY,int toX, int toY){
 		//not more spaces than than dice roll
 		//with in bounds of board(wich is grid_size*1 less that canvas i beleive)
@@ -241,6 +242,9 @@ public class Board {
 
 		return true;
 	}
+
+	
+
 	public void createHand(){
 
 	}
