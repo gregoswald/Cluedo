@@ -344,7 +344,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 
 					public void actionPerformed(ActionEvent arg0) {
-
+						
 
 					}
 
@@ -358,7 +358,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				dialog.add(cardsPanel);
 				dialog.pack();
 				dialog.setVisible(true);
-
+				
 
 
 
