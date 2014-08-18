@@ -223,7 +223,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 							canvas.getGameBoard().addPlayer(5, new Plum());
 						}
 						
-						
+					
 						//start the game again
 						//Envelope envelope = new Envelope();
 
@@ -239,8 +239,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				title.add(numberPlayersPanel);
 				title.pack();
 				title.setVisible(true);
-
-
+				
 
 
 
@@ -252,7 +251,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		});
 
 
-
+		
 
 		return startNewGameItem;
 	}
