@@ -6,6 +6,7 @@ import java.util.List;
 public class Scarlett implements Player {
 	String playerName;
 	private Square playerPos;
+	public String ID = "Scarlett";
 	List<Card> hand = new ArrayList<Card>();
 
 	
@@ -23,5 +24,10 @@ public class Scarlett implements Player {
 	}
 	public void getPos(Square sq){
 		playerPos = sq;
+	}
+
+	@Override
+	public String getID() {
+		return ID;
 	}
 }

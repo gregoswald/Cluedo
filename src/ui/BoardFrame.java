@@ -142,7 +142,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 			public void actionPerformed(ActionEvent arg0) {
 				final Window mainWindow = SwingUtilities.windowForComponent(menuItem);
 				final JDialog title = new JDialog(mainWindow, "New Game");
-				
+
 				title.setLocation(200,250);
 				title.setModal(true);
 
@@ -232,6 +232,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						//Envelope envelope = new Envelope();
 
 						title.dispose();
+						canvas.repaint();
 					}
 
 				});
@@ -307,7 +308,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 	}
 	/**
-	 * Method that creates a button containing logic for the accusations
+	 * Method that creates a button containing logic for the accusations - Past being a nice interface, actually does nothing yet as accuse is unimplemented as of yet
 	 * @return Button containing logic for accuse Window
 	 */
 	public static JButton newAccuseButton(){
@@ -344,7 +345,12 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 
 					public void actionPerformed(ActionEvent arg0) {
+
 						
+
+
+
+						dialog.dispose();
 
 					}
 

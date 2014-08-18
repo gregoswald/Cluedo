@@ -6,6 +6,7 @@ import java.util.List;
 public class Peacock implements Player {
 	private String playerName;
 	private Square playerPos;
+	public String ID = "Peacock";
 	List<Card> hand = new ArrayList<Card>();
 	@Override
 	public List<Card> gethand() {
@@ -22,5 +23,10 @@ public class Peacock implements Player {
 	}
 	public void getPos(Square sq){
 		playerPos = sq;
+	}
+
+	@Override
+	public String getID() {
+		return ID;
 	}
 }
