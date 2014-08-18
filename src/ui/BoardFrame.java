@@ -69,6 +69,11 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 
 	}
+
+	/**
+	 * Method which sets up the main window components for the game
+	 */
+
 	private void setupComponents(){
 		// Setup grid
 		grid = new GridBagConstraints();
@@ -121,7 +126,10 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		sidePanel.add(diceRollButton, grid);
 
 	}
-
+	/**
+	 * Method which starts a new game with 2-6 players
+	 * @return JMenuItem stating asking how many players in the new game, then starting a new game
+	 */
 	private JMenuItem startNewGame(){
 		JMenuItem startNewGameItem = new JMenuItem("New Game");
 		startNewGameItem.addActionListener(new ActionListener(){
@@ -179,7 +187,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						else if(player3.isSelected()){
 							players = 3;
 							enterPlayerName(3);
-						
+
 						}
 						else if(player4.isSelected()){
 							players = 4;
@@ -281,32 +289,68 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	public void mouseDragged(MouseEvent e) {
 		canvas.movePiece(e.getX(), e.getY());
 		canvas.repaint();
-		
+
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
 
 
 	}
-
+	/**
+	 * Method that creates a button containing logic for the accusations
+	 * @return Button containing logic for accuse Window
+	 */
 	public static JButton newAccuseButton(){
 		final JButton button = new JButton("   Accuse   ");
 		button.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Window mainWindow = SwingUtilities.windowForComponent(button);
-				final JDialog dialog = new JDialog(mainWindow, "Accuse");
-				dialog.setLocation(50, 50);
-				dialog.setSize(700,700);
+
+				Window window = SwingUtilities.windowForComponent(button);
+				final JDialog dialog = new JDialog(window, "Accuse");
+				dialog.setLocation(200, 350);
 				dialog.setModal(true);
 				JPanel cardsPanel = new JPanel();
-				dialog.add(cardsPanel);
-				dialog.setVisible(true);
+
 				
+
+
 				//DropDowns
 				String[] murderersList = { "Miss Scarlett", "Col. Mustard", "Mrs. White", "Reverand Green", "Mrs. Peacock", "Prof. Plum"};
-				final JComboBox<String> Murderers = new JComboBox<String>(murderersList);
+				final JComboBox<String> murderers = new JComboBox<String>(murderersList);
+				String[] murderItemsList = { "Candlestick", "Dagger", "Lead Pipe", "Revolver", "Rope", "Spanner"};
+				final JComboBox<String> murderItems = new JComboBox<String>(murderItemsList);
+				String[] murderRoomList = {"Kitchen", "Ball Room", "Conservatory", "Dining Room", "Billiard Room", "Library", "Lounge", "Hall", "Study"}; 
+				final JComboBox<String> murderRoom = new JComboBox<String>(murderRoomList);
+
+				//Needs a check somewhere for whether the player is in a room
+
+				//
+
+
+				final JButton submit = new JButton("Submit");
+				submit.addActionListener(new ActionListener() {
+
+
+					public void actionPerformed(ActionEvent arg0) {
+
+
+					}
+
+				});
+
+				//Could possibly add something to distinguish between accusing and checking within rooms?
+				cardsPanel.add(murderers);
+				cardsPanel.add(murderItems);
+				cardsPanel.add(murderRoom);
+				cardsPanel.add(submit);
+				dialog.add(cardsPanel);
+				dialog.pack();
+				dialog.setVisible(true);
+
+
+
 
 			}
 
@@ -315,6 +359,12 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 	}
 
+
+	/**
+	 * Method which creates "End Turn" Button with its logic (For ending players turn and passing to the next player), and returns it
+	 *
+	 * @return JButton containing logic for Ending turn
+	 */
 	public static JButton newEndTurnButton(){
 		final JButton button = new JButton("  End Turn  ");
 		button.addActionListener(new ActionListener() {
@@ -330,6 +380,13 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 	}
 
+
+
+	/**
+	 * Method which creates "Reveal Cards" Button with its logic (For hiding and revealing the players hand), and returns it
+	 *
+	 * @return JButton containing logic for Hiding and Revealing Cards
+	 */
 	public static JButton newRevealCardsButton(){
 		final JButton button = new JButton("Reveal Cards");
 		button.addActionListener(new ActionListener() {
@@ -345,21 +402,32 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 	}
 
-	
-	
 
+
+	/**
+	 * Method which creates "Roll Dice" Button with its logic, and returns it
+	 * @param canvas
+	 * @return JButton containing logic for rolling dice
+	 */
 	public static JButton newDiceRollButton(final BoardCanvas canvas){
 		final JButton button = new JButton("Roll Dice");
-		
+
 		button.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {canvas.getGameBoard().rollDice();}
-			});
+		});
 		return button;
 
 	}
-	
+
+
+	/**
+	 * Method which contains logic for setting up the players in the game
+	 * @param players - Int describing how many players are to be in the game
+	 */
+
+
 	public void enterPlayerName(int players){
 		if(players >=6){
 			Window player6Window = SwingUtilities.windowForComponent(menuItem);
