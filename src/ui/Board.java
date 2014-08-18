@@ -343,6 +343,8 @@ public class Board {
 
 		//Make the envelope from the 3 cards left over
 		makeEnvelope(envelopePerson, envelopeWeapon, envelopeRoom);
+		
+		//Make Deck
 		deck.addAll(people);
 		deck.addAll(weapons);
 		deck.addAll(rooms);
