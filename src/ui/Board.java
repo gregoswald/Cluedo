@@ -1,5 +1,6 @@
 package ui;
 import game.Card;
+import game.Envelope;
 import game.Green;
 import game.Mustard;
 import game.Peacock;
@@ -10,6 +11,7 @@ import game.Scarlett;
 import game.Square.Type;
 import game.Square;
 import game.White;
+import game.playerCard;
 import game.roomCard;
 import game.weaponCard;
 
@@ -46,6 +48,7 @@ public class Board {
 	private final Room CONSERVATORY = new Room(); 
 	private final Room LIBRARY = new Room(); 
 	private final Room BILLIARDROOM = new Room();
+	private Envelope envelope;
 	List<Card> deck = new ArrayList<Card>();
 	public Board(){
 		fillInitialArray();
@@ -243,7 +246,7 @@ public class Board {
 		return true;
 	}
 
-	
+
 
 	public void createHand(){
 
@@ -290,10 +293,27 @@ public class Board {
 		envelopeWeapon = weapons.remove(weapons.size());
 
 		//Deals with player cards
+		people.add(new playerCard("Miss Scarlett"));
+		people.add(new playerCard("Colonel Mustard"));
+		people.add(new playerCard("Mrs. White"));
+		people.add(new playerCard("The Reverend Green"));
+		people.add(new playerCard("Mrs. Peacock"));
+		people.add(new playerCard("Professor Plum"));
+		Collections.shuffle(weapons);
+		envelopePerson = people.remove(people.size());
+
+		//Make the envelope from the 3 cards left over
+		makeEnvelope(envelopePerson, envelopeWeapon, envelopeRoom);
 
 
 
 
+	}
+
+	public Envelope makeEnvelope(Card murderer, Card murderWeapon, Card murderRoom){
+		Envelope tempEnvelope = new Envelope(murderer, murderWeapon, murderRoom);
+		envelope = tempEnvelope;
+		return envelope;
 
 	}
 
