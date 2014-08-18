@@ -1,5 +1,6 @@
 package ui;
 import game.Card;
+import game.Envelope;
 import game.Green;
 import game.Mustard;
 import game.Peacock;
@@ -10,7 +11,9 @@ import game.Scarlett;
 import game.Square.Type;
 import game.Square;
 import game.White;
+import game.playerCard;
 import game.roomCard;
+import game.weaponCard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,10 +48,11 @@ public class Board {
 	private final Room CONSERVATORY = new Room(); 
 	private final Room LIBRARY = new Room(); 
 	private final Room BILLIARDROOM = new Room();
+	private Envelope envelope;
 	List<Card> deck = new ArrayList<Card>();
 	public Board(){
 		fillInitialArray();
-	
+
 	}
 	public Square[][] getBoardArray(){
 		return board;
@@ -193,51 +197,125 @@ public class Board {
 		System.out.println(dieOne);
 		System.out.println(dieTwo);
 	}
-	
+
 	public void startGame(){
-		
+
 	}
-	
+
+	public boolean validMove( int fromX, int fromY,int toX, int toY){
+		//not more spaces than than dice roll
+		//with in bounds of board(wich is grid_size*1 less that canvas i beleive)
+		//not out of turn
+		//can only enter room through door
+
+
+		if(board[toX][toY].getID().equals(Square.Type.BALLROOM)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.BILLIARDROOM)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.BORDER)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.CELLAR)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.CONSERVATORY)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.DININGROOM)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.HALL)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.LOUNGE)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.KITCHEN)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.LIBRARY)){
+			return false;
+		}
+		if(board[toX][toY].getID().equals(Square.Type.STUDY)){
+			return false;
+		}
+
+		return true;
+	}
+
+
+
 	public void createHand(){
-		
+
 	}
 	public void addPlayer(int playerNo, Player character){
 		if(playerNo <= 6 && playerNo >= 0){
 			players[playerNo] = character;
 		}
 	}
-	
-	
-/**
- * Creates a deck out of randomised cards, leaving one in each category out for the envelope	
- */
-public void makeDeck(){
-	List<Card> people = new ArrayList<Card>();
-	List<Card> weapons = new ArrayList<Card>();
-	List<Card> rooms = new ArrayList<Card>();
-	Card envelopeRoom;
-	Card envelopeWeapon;
-	Card envelopePerson;
-	
-	//Deals with room cards
-	rooms.add(new roomCard("Kitchen"));
-	rooms.add(new roomCard("Ballroom"));
-	rooms.add(new roomCard("Conservatory"));
-	rooms.add(new roomCard("Diningroom"));
-	rooms.add(new roomCard("Billiardroom"));
-	rooms.add(new roomCard("Library"));
-	rooms.add(new roomCard("Lounge"));
-	rooms.add(new roomCard("Hall"));
-	rooms.add(new roomCard("Study"));
-	Collections.shuffle(rooms);
-	envelopeRoom = rooms.remove(rooms.size());
-	
-	//Deals with weapon cards
-	
-	
-	
-	
-}
+
+
+	/**
+	 * Creates a deck out of randomised cards, leaving one in each category out for the envelope	
+	 */
+	public void makeDeck(){
+		List<Card> people = new ArrayList<Card>();
+		List<Card> weapons = new ArrayList<Card>();
+		List<Card> rooms = new ArrayList<Card>();
+		Card envelopeRoom;
+		Card envelopeWeapon;
+		Card envelopePerson;
+
+		//Deals with room cards
+		rooms.add(new roomCard("Kitchen"));
+		rooms.add(new roomCard("Ballroom"));
+		rooms.add(new roomCard("Conservatory"));
+		rooms.add(new roomCard("Diningroom"));
+		rooms.add(new roomCard("Billiardroom"));
+		rooms.add(new roomCard("Library"));
+		rooms.add(new roomCard("Lounge"));
+		rooms.add(new roomCard("Hall"));
+		rooms.add(new roomCard("Study"));
+		Collections.shuffle(rooms);
+		envelopeRoom = rooms.remove(rooms.size());
+
+		//Deals with weapon cards
+		weapons.add(new weaponCard("CandleStick"));
+		weapons.add(new weaponCard("Dagger"));
+		weapons.add(new weaponCard("Lead Pipe"));
+		weapons.add(new weaponCard("Revolver"));
+		weapons.add(new weaponCard("Rope"));
+		weapons.add(new weaponCard("Spanner"));
+		Collections.shuffle(weapons);
+		envelopeWeapon = weapons.remove(weapons.size());
+
+		//Deals with player cards
+		people.add(new playerCard("Miss Scarlett"));
+		people.add(new playerCard("Colonel Mustard"));
+		people.add(new playerCard("Mrs. White"));
+		people.add(new playerCard("The Reverend Green"));
+		people.add(new playerCard("Mrs. Peacock"));
+		people.add(new playerCard("Professor Plum"));
+		Collections.shuffle(weapons);
+		envelopePerson = people.remove(people.size());
+
+		//Make the envelope from the 3 cards left over
+		makeEnvelope(envelopePerson, envelopeWeapon, envelopeRoom);
+
+
+
+
+	}
+
+	public Envelope makeEnvelope(Card murderer, Card murderWeapon, Card murderRoom){
+		Envelope tempEnvelope = new Envelope(murderer, murderWeapon, murderRoom);
+		envelope = tempEnvelope;
+		return envelope;
+
+	}
 
 
 

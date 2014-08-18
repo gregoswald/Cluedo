@@ -1,4 +1,5 @@
 package ui;
+import game.Envelope;
 import game.Green;
 import game.Mustard;
 import game.Peacock;
@@ -221,6 +222,10 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						if(players >= 6){
 							canvas.getGameBoard().addPlayer(5, new Plum());
 						}
+						
+						
+						//start the game again
+						//Envelope envelope = new Envelope();
 
 					}
 
