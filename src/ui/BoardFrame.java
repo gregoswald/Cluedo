@@ -1,4 +1,11 @@
 package ui;
+import game.Green;
+import game.Mustard;
+import game.Peacock;
+import game.Plum;
+import game.Scarlett;
+import game.White;
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -50,7 +57,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		add(menuBar, BorderLayout.NORTH);
 		add(canvas, BorderLayout.WEST); //Lays out board in center, adds the canvas
 		add(sidePanel, BorderLayout.EAST);
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setResizable(false); //prevents board from being resizable
@@ -74,13 +81,13 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				"Menu Bar");
 		//create menuitems
 		menuItem = startNewGame();
-		
+
 		//add items
 		menuBar.add(menu);
 		menu.add(menuItem);
 
 
-        // Setup sidepanel
+		// Setup sidepanel
 		sidePanel = new JPanel(new GridBagLayout());
 		sidePanel.setSize(sidePanelWidth, windowHeight);
 		sidePanel.setBackground(Color.gray);
@@ -113,93 +120,127 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		sidePanel.add(diceRollButton, grid);
 
 	}
-	
+
 	private JMenuItem startNewGame(){
-	JMenuItem startNewGameItem = new JMenuItem("New Game");
-	startNewGameItem.addActionListener(new ActionListener(){
+		JMenuItem startNewGameItem = new JMenuItem("New Game");
+		startNewGameItem.addActionListener(new ActionListener(){
 
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			Window mainWindow = SwingUtilities.windowForComponent(menuItem);
-			JDialog title = new JDialog(mainWindow, "New Game");
-			title.setLocation(200,250);
-			title.setModal(true);
-			
-			//Number of Players Panel
-			JPanel numberPlayersPanel = new JPanel();
-			
-			//Using Radio Buttons for Characters 2-6 players (Cant have one, 1 player would be pointless)
-			JRadioButton player2 = new JRadioButton("2 Players");
-			player2.setActionCommand("Play with 2 Players");
-			player2.setSelected(true);
-			
-			JRadioButton player3 = new JRadioButton("3 Players");
-			player3.setActionCommand("Play with 3 Players");
-			player3.setSelected(true);
-			
-			JRadioButton player4 = new JRadioButton("4 Players");
-			player4.setActionCommand("Play with 4 Players");
-			player4.setSelected(true);
-			
-			JRadioButton player5 = new JRadioButton("5 Players");
-			player5.setActionCommand("Play with 5 Players");
-			player5.setSelected(true);
-			
-			JRadioButton player6 = new JRadioButton("6 Players");
-			player6.setActionCommand("Play with 6 Players");
-			player6.setSelected(true);
-			
-			//Make a group for the buttons
-			final ButtonGroup buttonGroup = new ButtonGroup();
-			buttonGroup.add(player2);
-			buttonGroup.add(player3);
-			buttonGroup.add(player4);
-			buttonGroup.add(player5);
-			buttonGroup.add(player6);
-			
-			//Submit button and logic for new game window
-			JButton submitButton = new JButton("Submit");
-			submitButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Window mainWindow = SwingUtilities.windowForComponent(menuItem);
+				JDialog title = new JDialog(mainWindow, "New Game");
+				title.setLocation(200,250);
+				title.setModal(true);
 
-				
-				public void actionPerformed(ActionEvent e) {
-					
-					
-				}
-				
-			});
-			numberPlayersPanel.add(player2);
-			numberPlayersPanel.add(player3);
-			numberPlayersPanel.add(player4);
-			numberPlayersPanel.add(player5);
-			numberPlayersPanel.add(player6);
-			numberPlayersPanel.add(submitButton);
-			title.add(numberPlayersPanel);
-			title.pack();
-			title.setVisible(true);
-			
-			
-			
-			
-			
-			
-			
-			
-		}
-		
-	});
-	
-	
-	
-	
-	return startNewGameItem;
+				//Number of Players Panel
+				JPanel numberPlayersPanel = new JPanel();
+
+				//Using Radio Buttons for Characters 2-6 players (Cant have one, 1 player would be pointless)
+				final JRadioButton player2 = new JRadioButton("2 Players");
+				player2.setActionCommand("Play with 2 Players");
+				player2.setSelected(true);
+
+				final JRadioButton player3 = new JRadioButton("3 Players");
+				player3.setActionCommand("Play with 3 Players");
+				player3.setSelected(true);
+
+				final JRadioButton player4 = new JRadioButton("4 Players");
+				player4.setActionCommand("Play with 4 Players");
+				player4.setSelected(true);
+
+				final JRadioButton player5 = new JRadioButton("5 Players");
+				player5.setActionCommand("Play with 5 Players");
+				player5.setSelected(true);
+
+				final JRadioButton player6 = new JRadioButton("6 Players");
+				player6.setActionCommand("Play with 6 Players");
+				player6.setSelected(true);
+
+				//Make a group for the buttons
+				final ButtonGroup buttonGroup = new ButtonGroup();
+				buttonGroup.add(player2);
+				buttonGroup.add(player3);
+				buttonGroup.add(player4);
+				buttonGroup.add(player5);
+				buttonGroup.add(player6);
+
+				//Submit button and logic for new game window
+				JButton submitButton = new JButton("Submit");
+				submitButton.addActionListener(new ActionListener(){
+
+
+					public void actionPerformed(ActionEvent e) {
+						int players;
+						if(player2.isSelected()){
+							players = 2;
+						}
+						else if(player3.isSelected()){
+							players = 3;
+						}
+						else if(player4.isSelected()){
+							players = 4;
+						}
+						else if(player5.isSelected()){
+							players = 5;
+						}
+						else{
+							players = 6;
+						}
+
+						//Now that number of players is established, set the player characters
+
+						canvas.getGameBoard().addPlayer(1, new Scarlett());
+						if(players >= 2){
+							canvas.getGameBoard().addPlayer(2, new Mustard());
+						}
+						if(players >= 3){
+							canvas.getGameBoard().addPlayer(3, new White());
+						}
+						if(players >= 4){
+							canvas.getGameBoard().addPlayer(4, new Green());
+						}
+						if(players >= 5){
+							canvas.getGameBoard().addPlayer(5, new Peacock());
+						}
+						if(players >= 6){
+							canvas.getGameBoard().addPlayer(6, new Plum());
+						}
+
+					}
+
+				});
+				numberPlayersPanel.add(player2);
+				numberPlayersPanel.add(player3);
+				numberPlayersPanel.add(player4);
+				numberPlayersPanel.add(player5);
+				numberPlayersPanel.add(player6);
+				numberPlayersPanel.add(submitButton);
+				title.add(numberPlayersPanel);
+				title.pack();
+				title.setVisible(true);
+
+
+
+
+
+
+
+
+			}
+
+		});
+
+
+
+
+		return startNewGameItem;
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	public BoardCanvas getCanvas(){
 		return canvas;
 	}
@@ -291,7 +332,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		return button;
 
 	}
-	
+
 	public static JButton newDiceRollButton(){
 		final JButton button = new JButton("Roll Dice");
 		button.addActionListener(new ActionListener() {
