@@ -21,6 +21,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -302,6 +303,10 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 				JPanel cardsPanel = new JPanel();
 				dialog.add(cardsPanel);
 				dialog.setVisible(true);
+				
+				//DropDowns
+				String[] murderersList = { "Miss Scarlett", "Col. Mustard", "Mrs. White", "Reverand Green", "Mrs. Peacock", "Prof. Plum"};
+				final JComboBox<String> Murderers = new JComboBox<String>(murderersList);
 
 			}
 
