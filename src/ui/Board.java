@@ -30,7 +30,7 @@ public class Board {
 	private Player[] players;
 	private boolean solved;
 	private Player winner;
-	private int current_turn;
+	private int currentTurn;
 	private final Square[][] board = new Square[27][26]; //2D Array representing the board
 	private final Room STUDY = new Room(); 
 	private final Room HALL = new Room();
@@ -185,18 +185,55 @@ public class Board {
 		dieOne = rand.nextInt(6) + 1;
 		dieTwo = rand.nextInt(6) + 1;
 		System.out.println(dieOne);
-		System.out.println(dieOne);
+		System.out.println(dieTwo);
 	}
 	
 	public void startGame(){
 		
 	}
-	public void validMove(){
+	public boolean validMove( int fromX, int fromY,int toX, int toY){
 		//not more spaces than than dice roll
-		//with in bounds of board(wich is grid_size*2 less that canvas i beleive)
+		//with in bounds of board(wich is grid_size*1 less that canvas i beleive)
 		//not out of turn
 		//can only enter room through door
+	
+	
+	if(board[toX][toY].getID().equals(Square.Type.BALLROOM)){
+		return false;
 	}
+	if(board[toX][toY].getID().equals(Square.Type.BILLIARDROOM)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.BORDER)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.CELLAR)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.CONSERVATORY)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.DININGROOM)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.HALL)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.LOUNGE)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.KITCHEN)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.LIBRARY)){
+		return false;
+	}
+	if(board[toX][toY].getID().equals(Square.Type.STUDY)){
+		return false;
+	}
+	
+	return true;
+			}
 	public void createHand(){
 		
 	}

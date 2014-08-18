@@ -30,7 +30,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	int mouseClickY;
 	private static int windowHeight = 850;
 	private int sidePanelWidth = 250;
-	BoardCanvas canvas;
+	private BoardCanvas canvas;
 	private JPanel sidePanel;
 	private JScrollPane textSP;
 	private static JTextArea textOutput;
@@ -94,7 +94,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		accuseButton = newAccuseButton();
 		endTurnButton = newEndTurnButton();
 		revealCardsButton = newRevealCardsButton();
-		diceRollButton = newDiceRollButton();
+		diceRollButton = newDiceRollButton(canvas);
 		//Add components
 		grid.gridwidth = 3;
 		grid.gridx = 0;
@@ -232,7 +232,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	public void mouseDragged(MouseEvent e) {
 		canvas.movePiece(e.getX(), e.getY());
 		canvas.repaint();
-
+		
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
@@ -291,15 +291,17 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		return button;
 
 	}
-	
-	public static JButton newDiceRollButton(){
+	public void rollDice(){
+		
+	}
+	public static JButton newDiceRollButton(final BoardCanvas canvas){
 		final JButton button = new JButton("Roll Dice");
+		
 		button.addActionListener(new ActionListener() {
-
+			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-
-
+				canvas.getGameBoard().rollDice();
 			}
 
 		});
