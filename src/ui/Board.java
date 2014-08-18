@@ -343,6 +343,12 @@ public class Board {
 
 		//Make the envelope from the 3 cards left over
 		makeEnvelope(envelopePerson, envelopeWeapon, envelopeRoom);
+		deck.addAll(people);
+		deck.addAll(weapons);
+		deck.addAll(rooms);
+		Collections.shuffle(deck);
+		
+		
 
 
 
@@ -382,5 +388,10 @@ public class Board {
 	public Player getPlayer(int playerNumber){
 		return players[playerNumber];
 	}
+	
+	public List getDeck(){
+		return deck;
+	}
+	
 
 }

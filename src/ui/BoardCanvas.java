@@ -81,7 +81,7 @@ public class BoardCanvas extends JPanel{
 		}
 	}
 	/**
-	 * 
+	 * Gets colour for player Pieces
 	 * @param p
 	 * @return
 	 */
@@ -103,8 +103,10 @@ public class BoardCanvas extends JPanel{
 		}
 		return Color.yellow;
 	}
+	
+	
 	/**
-	 * 
+	 * Paints canvas 
 	 */
 	public void paint(Graphics g){
 		g.setColor(Color.BLUE);
@@ -146,8 +148,10 @@ public class BoardCanvas extends JPanel{
 		g.setColor(Color.black);
 		g.drawRect(0, 0,canvas_width-1,canvas_height-1);
 	}
+	
+	
 	/**
-	 * 
+	 * Algorithm which detects where a piece has been move too after being detected
 	 * @param x
 	 * @param y
 	 */
@@ -170,8 +174,10 @@ public class BoardCanvas extends JPanel{
 			selected = null;
 		}
 	}
+	
+	
 	/**
-	 * 
+	 * Algorithm which detects when a piece is clicked, so that it may be dragged
 	 * @param x
 	 * @param y
 	 */
@@ -185,6 +191,8 @@ public class BoardCanvas extends JPanel{
 		}
 	}
 	}
+	
+	
 	/**
 	 * 
 	 * @param x
@@ -195,6 +203,8 @@ public class BoardCanvas extends JPanel{
 		piece_x = x;
 		piece_y = y;
 	}
+	
+	
 	public void setNextPicture(){
 
 	}
