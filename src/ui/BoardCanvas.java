@@ -158,7 +158,7 @@ public class BoardCanvas extends JPanel{
 	 */
 	public void setPiece(int x,int y){
 		dest_square_x = x/grid_size;
-		dest_square_y = (y/grid_size)-1;
+		dest_square_y = (y/grid_size)-2;//Accidentally broke mouse movement when adding menu bar, had to offset by one more
 		if(board.getBoardArray()[dest_square_y][dest_square_x].getOccupied()==null&&selected!=null){
 			board.getBoardArray()[dest_square_y][dest_square_x].setOccupied(selected);
 			board.getBoardArray()[current_square_y][current_square_x].setOccupied(null);
@@ -176,7 +176,7 @@ public class BoardCanvas extends JPanel{
 	 */
 	public void selectPiece(int x,int y){
 		current_square_x = x/grid_size;
-		current_square_y = (y/grid_size)-1;
+		current_square_y = (y/grid_size)-2; //Accidentally broke mouse movement when adding menu bar, had to offset by one more
 		//is there a piece in the current square or whatever should probs go here
 		if(board.getBoardArray()[current_square_y][current_square_x].getOccupied()!=null){
 			selected = board.getBoardArray()[current_square_y][current_square_x].getOccupied();

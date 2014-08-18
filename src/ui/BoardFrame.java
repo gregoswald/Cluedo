@@ -44,9 +44,10 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		canvas = new BoardCanvas(new Board());
 		setLayout(new BorderLayout()); 
 		setupComponents();
+		add(menuBar, BorderLayout.NORTH);
 		add(canvas, BorderLayout.WEST); //Lays out board in center, adds the canvas
 		add(sidePanel, BorderLayout.EAST);
-		add(menuBar, BorderLayout.NORTH);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setResizable(false); //prevents board from being resizable
