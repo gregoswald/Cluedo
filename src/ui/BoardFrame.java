@@ -232,6 +232,7 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 						//Envelope envelope = new Envelope();
 
 						title.dispose();
+						canvas.repaint();
 					}
 
 				});

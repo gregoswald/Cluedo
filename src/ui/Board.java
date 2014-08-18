@@ -321,6 +321,8 @@ public class Board {
 		return envelope;
 	}
 
-
+public Player getPlayer(int playerNumber){
+	return players[playerNumber];
+}
 
 }
