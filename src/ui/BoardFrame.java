@@ -15,7 +15,9 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -34,6 +36,9 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	private JButton accuseButton;
 	private JButton endTurnButton;
 	private JButton revealCardsButton;
+	private JMenuBar menuBar;
+	private JMenu menu;
+	private JMenuItem menuItem;
 	public BoardFrame(){
 		super("CLUEDO");		
 		canvas = new BoardCanvas(new Board());
@@ -41,48 +46,64 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 		setupComponents();
 		add(canvas, BorderLayout.WEST); //Lays out board in center, adds the canvas
 		add(sidePanel, BorderLayout.EAST);
+		add(menuBar, BorderLayout.NORTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setResizable(false); //prevents board from being resizable
 		setVisible(true); 
 		addMouseListener(this);
-		
-		
+
+
 
 
 	}
 	private void setupComponents(){
-		// Setup the grid
-				grid = new GridBagConstraints();
-				
-		// Setup the side panel
-				sidePanel = new JPanel(new GridBagLayout());
-				sidePanel.setSize(sidePanelWidth, windowHeight);
-				sidePanel.setBackground(Color.gray);
-				
-				// Setup components to go into the sidePanel
-				// Text Area
-				textOutput = new JTextArea(5, 25);
-				textOutput.setEditable(false);
-				textOutput.setText("  Welcome to Cluedo");
-				textSP = new JScrollPane(textOutput);
-				accuseButton = newAccuseButton();
-				endTurnButton = newEndTurnButton();
-				revealCardsButton = newRevealCardsButton();
-				//Add components
-				grid.gridwidth = 3;
-				grid.gridx = 0;
-				grid.gridy = 0;
-				sidePanel.add(textSP, grid);
-				grid.gridwidth = 1;
-				grid.gridx = 0;
-				grid.gridy = 2;
-				sidePanel.add(accuseButton, grid);
-				grid.gridx = 1;
-				sidePanel.add(endTurnButton, grid);
-				grid.gridx = 2;
-				sidePanel.add(revealCardsButton, grid);
-				
+		// Setup grid
+		grid = new GridBagConstraints();
+		// Setup JMenuBar
+
+		// MenuBar
+		menuBar = new JMenuBar();
+		// Menu	
+		menu = new JMenu("Options");
+		menu.getAccessibleContext().setAccessibleDescription(
+				"Menu Bar");
+		//create menuitems
+		menuItem = new JMenuItem("New Game");
+		
+		//add items
+		menuBar.add(menu);
+		menu.add(menuItem);
+
+
+        // Setup sidepanel
+		sidePanel = new JPanel(new GridBagLayout());
+		sidePanel.setSize(sidePanelWidth, windowHeight);
+		sidePanel.setBackground(Color.gray);
+
+		// Setup components for sidePanel
+		// Text Area
+		textOutput = new JTextArea(5, 25);
+		textOutput.setEditable(false);
+		textOutput.setText("  Welcome to Cluedo");
+		textSP = new JScrollPane(textOutput);
+		accuseButton = newAccuseButton();
+		endTurnButton = newEndTurnButton();
+		revealCardsButton = newRevealCardsButton();
+		//Add components
+		grid.gridwidth = 3;
+		grid.gridx = 0;
+		grid.gridy = 0;
+		sidePanel.add(textSP, grid);
+		grid.gridwidth = 1;
+		grid.gridx = 0;
+		grid.gridy = 2;
+		sidePanel.add(accuseButton, grid);
+		grid.gridx = 1;
+		sidePanel.add(endTurnButton, grid);
+		grid.gridx = 2;
+		sidePanel.add(revealCardsButton, grid);
+
 	}
 	public BoardCanvas getCanvas(){
 		return canvas;
@@ -116,64 +137,64 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 	public void mouseDragged(MouseEvent e) {
 		canvas.movePiece(e.getX(), e.getY());
 		canvas.repaint();
-		
+
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		
-		
+
+
 	}
 
-public static JButton newAccuseButton(){
-	final JButton button = new JButton("   Accuse   ");
-	button.addActionListener(new ActionListener() {
+	public static JButton newAccuseButton(){
+		final JButton button = new JButton("   Accuse   ");
+		button.addActionListener(new ActionListener() {
 
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			Window mainWindow = SwingUtilities.windowForComponent(button);
-			final JDialog dialog = new JDialog(mainWindow, "Accuse");
-			dialog.setLocation(50, 50);
-			dialog.setSize(700,700);
-			dialog.setModal(true);
-			JPanel cardsPanel = new JPanel();
-			dialog.add(cardsPanel);
-			dialog.setVisible(true);
-			
-		}
-		
-	});
-	return button;
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Window mainWindow = SwingUtilities.windowForComponent(button);
+				final JDialog dialog = new JDialog(mainWindow, "Accuse");
+				dialog.setLocation(50, 50);
+				dialog.setSize(700,700);
+				dialog.setModal(true);
+				JPanel cardsPanel = new JPanel();
+				dialog.add(cardsPanel);
+				dialog.setVisible(true);
 
-}
+			}
 
-public static JButton newEndTurnButton(){
-	final JButton button = new JButton("  End Turn  ");
-	button.addActionListener(new ActionListener() {
+		});
+		return button;
 
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-		
-			
-		}
-		
-	});
-	return button;
+	}
 
-}
+	public static JButton newEndTurnButton(){
+		final JButton button = new JButton("  End Turn  ");
+		button.addActionListener(new ActionListener() {
 
-public static JButton newRevealCardsButton(){
-	final JButton button = new JButton("Reveal Cards");
-	button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
 
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-		
-			
-		}
-		
-	});
-	return button;
 
-}
+			}
+
+		});
+		return button;
+
+	}
+
+	public static JButton newRevealCardsButton(){
+		final JButton button = new JButton("Reveal Cards");
+		button.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+
+			}
+
+		});
+		return button;
+
+	}
 
 }
