@@ -346,10 +346,6 @@ public class BoardFrame extends JFrame implements MouseListener,MouseMotionListe
 
 					public void actionPerformed(ActionEvent arg0) {
 
-						
-
-
-
 						dialog.dispose();
 
 					}
