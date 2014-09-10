@@ -1,0 +1,16 @@
+I changed the player class to an interface that the pieces implement i figured that the players and the
+piece they play could be one and the same, but may be it might be good to change that back and make a piece interface.
+
+stairs
+
+game states
+
+i need to refine the mouse interface.
+
+the colors need replacing with custom rgbs or something. i think i might draw an overlay, it will remove alot of complicated
+code, and wont effect anything.
+
+some kind of valid move verification, bounds checking etc
+
+dice, random number generator.
+

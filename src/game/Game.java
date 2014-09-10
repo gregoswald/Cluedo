@@ -1,16 +1,22 @@
 package game;
 
+import ui.BoardFrame;
+
 public class Game {
 
 	/**
-	 * Main Method for the cluedo game -
+	 * Main Method for the Cluedo game -
 	 * Shouldn't be too complicated,
 	 * will probably pass off most of the functionality to other classes.
 	 * @param args
 	 */
+	String filename;
 	public static void main(String[] args) {
-		// TODO Fill in main to be able to run
 
+		BoardFrame cluedo = new BoardFrame();
+		
+
+		
 	}
 
 }
